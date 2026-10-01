@@ -165,28 +165,25 @@
       <h1>PABLOS 会員ステータス司令塔 <span style="font-size:.6em;opacity:.85">Stripe決済版</span></h1>
       <div class="sub">パブロス株式会社 ｜ Stripe決済連動ダッシュボード</div>
     </div>
-    <div class="updated">データ最終更新<br><b id="upd">2026/09/30</b></div>
+    <div class="updated">データ最終更新<br><b id="upd">2026/10/01</b></div>
   </div>
   <nav class="tabs" id="tabs">
     <button data-t="home" class="active">ホーム</button>
     <button data-t="todo">今週・今月</button>
     <button data-t="rank">会員内訳</button>
-    <button data-t="week" hidden>週次推移</button>
-    <button data-t="longterm" hidden>長期推移</button>
     <button data-t="toppa">突破AI</button>
     <button data-t="mail">配信監視</button>
     <button data-t="log">アクティビティ</button>
     <button data-t="bookclub">読書会</button>
     <button data-t="campus">Campus</button>
     <button data-t="stripesvc">決済サービス別</button>
-    <button data-t="integrity" hidden>整合性チェック</button>
   </nav>
 </header>
 
 <main>
 <!-- ================= HOME ================= -->
 <section class="tab active" id="home">
-  <p class="lead">Stripe決済だけで数えた会員の現在地です。<b>顧客DB・マイスピーの数字は使っていません。</b>毎朝自動で更新します。</p>
+  <p class="lead"><b>ホームと「会員内訳」は、Stripe決済だけで数えた会員の現在地です</b>（顧客DB・マイスピーの数字は使っていません）。毎朝自動で更新します。「突破AI」「決済サービス別」もStripe決済の実測です。それ以外のタブは元の司令塔から引き継いだ内容で、顧客DB・マイスピーの数字を含みます。</p>
   <div class="srcbar">データ出典：Stripe決済（読み取り専用）</div>
 
   <div class="sec"><span class="badge">S1</span><h2>会員数（Stripe決済のみ）</h2><span class="note">顧客DB・マイスピーは使いません／更新 <span id="sm-upd">—</span>・毎朝自動</span></div>
@@ -196,35 +193,42 @@
       <div class="num" style="color:var(--navy);font-size:42px;margin:4px 0"><span id="sm-total">—</span><span class="unit">名</span></div>
       <div class="foot" id="sm-total-foot">—</div>
     </div>
-    <div class="card kpi accent-top at-mentor"><div class="label"><span class="dot b-mentor"></span>メンター</div><div class="num" id="sm-m">—</div><div class="foot" id="sm-m-foot">—</div></div>
-    <div class="card kpi accent-top at-leader"><div class="label"><span class="dot b-leader"></span>リーダー</div><div class="num" id="sm-l">—</div><div class="foot" id="sm-l-foot">—</div></div>
-    <div class="card kpi accent-top at-crew"><div class="label"><span class="dot b-crew"></span>クルー</div><div class="num" id="sm-c">—</div><div class="foot" id="sm-c-foot">—</div></div>
-    <div class="card kpi accent-top at-sup"><div class="label"><span class="dot b-sup"></span>サポーター</div><div class="num" id="sm-s">—</div><div class="foot" id="sm-s-foot">—</div></div>
+    <div class="card kpi accent-top at-mentor"><div class="label"><span class="dot b-mentor"></span>メンター</div><div class="num"><span id="sm-m">—</span><span class="unit">名</span></div><div class="foot" id="sm-m-foot">—</div></div>
+    <div class="card kpi accent-top at-leader"><div class="label"><span class="dot b-leader"></span>リーダー</div><div class="num"><span id="sm-l">—</span><span class="unit">名</span></div><div class="foot" id="sm-l-foot">—</div></div>
+    <div class="card kpi accent-top at-crew"><div class="label"><span class="dot b-crew"></span>クルー</div><div class="num"><span id="sm-c">—</span><span class="unit">名</span></div><div class="foot" id="sm-c-foot">—</div></div>
+    <div class="card kpi accent-top at-sup"><div class="label"><span class="dot b-sup"></span>サポーター</div><div class="num"><span id="sm-s">—</span><span class="unit">名</span></div><div class="foot" id="sm-s-foot">—</div></div>
   </div>
   <div class="grid g4" style="margin-top:10px">
-    <div class="card kpi"><div class="label">見込み（突破Aiの無料期間中）<span style="font-size:10px;color:var(--muted)">別枠</span></div><div class="num" style="color:var(--crew)" id="sm-trial">—</div><div class="foot">Stripeのサブスクで無料期間中の方。課金が始まると会員数に入ります</div></div>
-    <div class="card kpi"><div class="label" id="sm-lm-label">先月の新規</div><div class="num" style="color:var(--pos)" id="sm-new">—</div><div class="foot" id="sm-new-foot">—</div></div>
-    <div class="card kpi"><div class="label" id="sm-lm-label2">先月の離脱</div><div class="num" style="color:var(--neg)" id="sm-left">—</div><div class="foot" id="sm-left-foot">—</div></div>
+    <div class="card kpi"><div class="label">見込み（突破Aiの無料期間中）<span style="font-size:10px;color:var(--muted)">別枠</span></div><div class="num" style="color:var(--crew)"><span id="sm-trial">—</span><span class="unit">名</span></div><div class="foot" id="sm-trial-foot">—</div></div>
+    <div class="card kpi"><div class="label" id="sm-lm-label">先月の新規</div><div class="num" style="color:var(--pos)"><span id="sm-new">—</span><span class="unit">名</span></div><div class="foot" id="sm-new-foot">—</div></div>
+    <div class="card kpi"><div class="label" id="sm-lm-label2">先月の離脱</div><div class="num" style="color:var(--neg)"><span id="sm-left">—</span><span class="unit">名</span></div><div class="foot" id="sm-left-foot">—</div></div>
     <div class="card kpi"><div class="label" id="sm-lm-label3">先月の会費売上</div><div class="num" id="sm-sales">—</div><div class="foot" id="sm-sales-foot">—</div></div>
   </div>
-  <div class="sec"><span class="badge">S2</span><h2>見込み（突破Aiの無料期間中）の資格別</h2><span class="note">Stripeサブスクの無料期間（14日間の体験＋30日間の初月無料＝44日）・顧客単位</span></div>
+
+  <div class="sec"><span class="badge">S2</span><h2>見込み（突破Aiの無料期間中）の資格別</h2><span class="note">単位：名（メールアドレス単位）／無料期間は44日＝14日間の体験＋30日間の初月無料</span></div>
   <div class="tbl-wrap">
     <table id="tbl-strial">
-      <thead><tr><th class="l">段階</th><th>計</th><th>メンター</th><th>リーダー</th><th>クルー</th><th>サポーター</th></tr></thead>
+      <thead><tr><th class="l">段階</th><th>計（名）</th><th>メンター</th><th>リーダー</th><th>クルー</th><th>サポーター</th></tr></thead>
       <tbody></tbody>
     </table>
   </div>
-  <div class="sec"><span class="badge">S3</span><h2>解除した時期（突破Aiのサブスク・これまでの累計）</h2><span class="note">無料期間の開始から解除した日までの日数で分けています・顧客単位</span></div>
+  <div class="callout" style="font-size:12px" id="sm-trial-note">—</div>
+
+  <div class="sec"><span class="badge">S3</span><h2>解除した時期（突破Aiのサブスク・これまでの累計）</h2><span class="note">単位：名（メールアドレス単位）／無料期間の開始から解除した日までの日数で分けています</span></div>
   <div class="tbl-wrap">
     <table id="tbl-scancel">
-      <thead><tr><th class="l">解除した時期</th><th>計</th><th>メンター</th><th>リーダー</th><th>クルー</th><th>サポーター</th><th>サブスク件数</th></tr></thead>
+      <thead><tr><th class="l">解除した時期</th><th>計（名）</th><th>メンター</th><th>リーダー</th><th>クルー</th><th>サポーター</th></tr></thead>
       <tbody></tbody>
     </table>
   </div>
-  <div class="callout"><b>会員数は「Stripeで会費を払っている方」だけで数えています。</b>①直近31日に会費の決済がある方（月払い）＋②年払いの有効期間（決済した月から12か月）内の方です。
+  <div class="callout" style="font-size:12px" id="sm-cancel-note">—</div>
+
+  <div class="callout"><b>会員数は「Stripeで会費を払っている方」だけで数えています。</b>
     <b>会費の決済</b>＝月会員資格・デジタル図書館（第5期・第6期リスキリング）・突破Aiのサブスクの決済で、講座・イベントの決済は含みません。
-    <b>資格</b>は金額で判定します（月19,800円・年237,600円＝メンター／月9,900円・年118,800円＝リーダー／月3,300円・年39,600円＝クルー／年7,920円＝サポーター。これ以外の金額は決済の内容で判定）。
-    人はメールアドレス単位で、2つの資格の決済がある方は上位の資格で1名と数えます。顧客DBの資格・退会欄や、マイスピーの配信リストは使っていません。
+    <b>有効期間</b>＝月払いは決済日から1か月（決済日のずれを吸収するため5日の猶予つき）、年払いは決済日から1年後の同じ日の前日までです。本日がその期間に入っている方を会員として数えます。
+    <b>資格</b>は金額で判定します（月19,800円・年237,600円＝メンター／月9,900円・年118,800円＝リーダー／月3,300円・年39,600円＝クルー／年7,920円＝サポーター）。入学金込みなど、この表にない金額の決済は、決済の内容に書かれた資格で判定し、有効期間は1か月としています。
+    人はメールアドレス単位で、2つの資格の決済がある方は上位の資格で1名と数えます。
+    <b>銀行振込など、Stripe以外で会費を払っている方は入っていません。</b>顧客DBの資格・退会欄や、マイスピーの配信リストも使っていません。
     月ごとの推移は「会員内訳」タブをご覧ください。</div>
 <div hidden data-hidden="元の司令塔のホーム（顧客DB・マイスピー基準を含む）">
   <div class="sec"><span class="badge">A0</span><h2>会員数の正（Stripe決済基準） <span style="font-size:12px;color:var(--pos);font-weight:700">＝会員数の正（2026/9/30〜）</span></h2><span class="note">顧客DBで本日有効のメンター・リーダー・クルー・サポーターを、Stripeの決済・サブスクと人単位（メール×資格）で突合／更新 <span id="ms-upd">—</span>・毎朝自動</span></div>
@@ -260,7 +264,7 @@
     </div>
     <div class="card kpi accent-top at-mentor"><div class="label"><span class="dot b-mentor"></span>メンター</div><div class="num" id="mb-r-mentor">—</div><div class="dd" id="dd-a-mentor"></div><div class="foot">配信リスト（MyASP）<b class="ml-mentor">43</b>名</div><div class="foot" id="mb-q-mentor">7月 退会9</div></div>
     <div class="card kpi accent-top at-leader"><div class="label"><span class="dot b-leader"></span>リーダー</div><div class="num" id="mb-r-leader">—</div><div class="dd" id="dd-a-leader"></div><div class="foot">配信リスト（MyASP）<b class="ml-leader">27</b>名</div><div class="foot" id="mb-q-leader">7月 退会9</div></div>
-    <div class="card kpi accent-top at-crew"><div class="label"><span class="dot b-crew"></span>クルー</div><div class="num" id="mb-r-crew">—</div><div class="dd" id="dd-a-crew"></div><div class="foot">配信リスト（MyASP）<b class="ml-crew">646</b>名</div><div class="foot" id="mb-q-crew">7月 退会27</div></div>
+    <div class="card kpi accent-top at-crew"><div class="label"><span class="dot b-crew"></span>クルー</div><div class="num" id="mb-r-crew">—</div><div class="dd" id="dd-a-crew"></div><div class="foot">配信リスト（MyASP）<b class="ml-crew">664</b>名</div><div class="foot" id="mb-q-crew">7月 退会27</div></div>
     <div class="card kpi accent-top at-sup"><div class="label"><span class="dot b-sup"></span>サポーター</div><div class="num" id="mb-r-sup">—</div><div class="dd" id="dd-a-sup"></div><div class="foot">配信リスト（MyASP）<b class="ml-sup">0</b>名</div><div class="foot" id="mb-q-sup">7月 退会0</div></div>
   </div>
   <div class="grid g5" style="margin-top:10px">
@@ -312,27 +316,27 @@
   </div>
 
 <div hidden data-hidden="D 配信ベース（MyASP到達）（2026/10/1 西村さん指示で非表示・会員数はA0のStripe決済基準のみ）">
-  <div class="sec"><span class="badge">D</span><h2>本日現在の会員状況 <span style="font-size:12px;color:var(--warn);font-weight:700">※参考・非正（配信ベース）</span></h2><span class="note">MyASP到達会員（配信可能）719名の内訳／会員数の正はA=<span class="mbase">250</span></span></div>
+  <div class="sec"><span class="badge">D</span><h2>本日現在の会員状況 <span style="font-size:12px;color:var(--warn);font-weight:700">※参考・非正（配信ベース）</span></h2><span class="note">MyASP到達会員（配信可能）737名の内訳／会員数の正はA=<span class="mbase">250</span></span></div>
   <div class="grid g5">
     <div class="card kpi accent-top">
       <div class="label">総会員数</div>
-      <div class="num" style="color:var(--navy)">719<span class="unit">名</span></div>
-      <div class="foot">2026年5月〜の累計（純増 +711）</div>
+      <div class="num" style="color:var(--navy)">737<span class="unit">名</span></div>
+      <div class="foot">2026年5月〜の累計（純増 +729）</div>
     </div>
     <div class="card kpi accent-top at-mentor">
       <div class="label"><span class="dot b-mentor"></span>メンター</div>
       <div class="num">43<span class="unit">名</span></div>
-      <div class="foot">構成比 6.0%</div>
+      <div class="foot">構成比 5.8%</div>
     </div>
     <div class="card kpi accent-top at-leader">
       <div class="label"><span class="dot b-leader"></span>リーダー</div>
       <div class="num">27<span class="unit">名</span></div>
-      <div class="foot">構成比 3.8%</div>
+      <div class="foot">構成比 3.7%</div>
     </div>
     <div class="card kpi accent-top at-crew">
       <div class="label"><span class="dot b-crew"></span>クルー</div>
-      <div class="num">646<span class="unit">名</span></div>
-      <div class="foot">構成比 89.8%（最大層）</div>
+      <div class="num">664<span class="unit">名</span></div>
+      <div class="foot">構成比 90.1%（最大層）</div>
     </div>
     <div class="card kpi accent-top at-sup">
       <div class="label"><span class="dot b-sup"></span>サポーター</div>
@@ -346,13 +350,13 @@
   <div class="grid g4">
     <div class="card kpi">
       <div class="label">純増減</div>
-      <div class="num" style="color:var(--pos)">+286<span class="unit">名</span></div>
-      <div class="foot">8月 +280 <span class="pill pos">+6</span></div>
+      <div class="num" style="color:var(--pos)">+304<span class="unit">名</span></div>
+      <div class="foot">8月 +280 <span class="pill pos">+24</span></div>
     </div>
     <div class="card kpi">
       <div class="label">新規入会（実数）</div>
-      <div class="num">292<span class="unit">名</span></div>
-      <div class="foot">メンター7・リーダー2・クルー283</div>
+      <div class="num">310<span class="unit">名</span></div>
+      <div class="foot">メンター7・リーダー2・クルー301</div>
     </div>
     <div class="card kpi">
       <div class="label">退会数</div>
@@ -424,8 +428,9 @@
 
 <!-- ================= TODO (今週やること) ================= -->
 <section class="tab" id="todo">
+  <div class="callout warn" style="font-size:12px;margin:0 0 12px"><b>このタブは、元の司令塔から引き継いだ内容です。</b>文中の「会員数の正」「当残」などの会員数は顧客DB基準で書かれた当時の記述で、<b>Stripe決済版の会員数とは数え方が違います</b>。会員数は「ホーム」と「会員内訳」（Stripe決済のみ）をご覧ください。文中の「長期推移」「整合性チェック」タブは、<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/" target="_blank" rel="noopener">元の司令塔</a>にあります。</div>
   <p class="lead"><b>今週・今月やること</b>を優先度順・担当つきで1本化しました。<b>「今週」は毎週月曜に更新（金曜まで固定）、「今月」は月末に翌月分へ更新</b>します。<b>「集める」は9月第2週で戻りました</b>——9/1〜14の流入は<b>44名</b>（うち直近7日で39名／9/7時点では6名——うち1名はその後解約のため、現在有効分では5名です）。ただし入口の内訳は<b>読書会が±0名で、X・ダイレクトが立ち上がった</b>という組み替えです（流入・予備軍・課金判定日の実数は<a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=toppa]').click();return false;">突破AIタブ</a>のカード群が毎朝の実測です）。向こう3か月の重点方針（下記）に沿って、集まり始めたいま、<b>受け皿（オンボード導線）を直すこと</b>と、離れた会員との再接点に集中します。</p>
-  <div class="srcbar">連動データ：<a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=longterm]').click();return false;">長期推移</a><a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=toppa]').click();return false;">突破AI</a><a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=bookclub]').click();return false;">読書会</a><a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=integrity]').click();return false;">整合性チェック</a></div>
+  <div class="srcbar">連動データ：長期推移（元の司令塔）<a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=toppa]').click();return false;">突破AI</a><a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=bookclub]').click();return false;">読書会</a>整合性チェック（元の司令塔）</div>
 
   <div class="sec" style="margin-top:14px"><span class="badge" style="background:#d9534f">KPI</span><h2>3つの数字だけ見れば現在地がわかります</h2><span class="note">2026/09/14更新・実測＋担当報告ベース（<b>累計進捗3本はいずれも報告待ち＝未計測</b>。【2】の176名内訳は9/1断面・Stripe実測は9/14断面／詳細は下の落とし込み表）</span></div>
   <div class="grid g3">
@@ -460,7 +465,7 @@
   </details>
 
   <div class="sec"><span class="badge" style="background:#1a2233">旗</span><h2>数値の落とし込み（現在地 → 月 → 週）</h2><span class="note">上のKPIサマリー3枚と同じ現在地（実測）起点・月あたり切り上げ／週あたり切り捨て（月あたり・週あたりは、9/30の月次更新で方針期限の10月末まで＝<b>残り1か月・約4.4週</b>の換算に直しました）</span></div>
-  <div class="srcbar">集計CSV（公開・個人名なし）：<a class="src" href="data/kpi-breakdown.csv" download>⬇ KPI落とし込み</a><a class="src" href="data/toppa-ai-176-breakdown.csv" download>⬇ 突破Ai 176名の内訳（9/1）</a><a class="src" href="data/mirogin-87-breakdown.csv" download>⬇ 未ログイン87名の内訳（9/1）</a></div>
+  <div class="srcbar">集計CSV（公開・個人名なし）：<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/data/kpi-breakdown.csv" download>⬇ KPI落とし込み</a><a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/data/toppa-ai-176-breakdown.csv" download>⬇ 突破Ai 176名の内訳（9/1）</a><a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/data/mirogin-87-breakdown.csv" download>⬇ 未ログイン87名の内訳（9/1）</a></div>
   <div class="srcbar">🔐 実名リスト（要ログイン・実務用）：<a class="src" href="https://docs.google.com/spreadsheets/d/191fhWA6D_JAzlL0VdPiaDuWt-SBqr1F7bo48OSazpqc/edit#gid=102521022" target="_blank" rel="noopener">突破AIクルー176名（氏名・メール・課金判定日つき／タブ「突破AIクルー176名_0901断面」→ファイル＞ダウンロード＞CSV）</a><span class="src" style="font-size:10px">※個人情報のため権限保持者のみ・9/1断面</span></div>
   <div class="tbl-wrap">
     <table>
@@ -498,7 +503,7 @@
       <div class="act-body">
         <h4>「集める」が戻りました。ただし入口は、読書会ではありませんでした【方針2】</h4>
         <p>ファネル設計士として申し上げます。先週このカードで「集める力は9月の7日間で6名。動いているのは解約だけ」と申し上げました。<b>その診断は、1週間で引っくり返りました</b>。クルー予備軍は<b>106名→131名（+25名）</b>。登録累計は207件→<b>248件（+41件）</b>、解約は92件→<b>108件（+16件）</b>で、106＋41−16＝131とちょうど閉じます（前週・今週とも朝9:15の自動更新断面どうしの比較。<b>登録・解約は件数、予備軍は顧客ユニークの人数</b>で、同一の方が複数回登録される例があるため厳密には単位が異なります）。9月の流入は<b>9/1〜14で44名・直近7日で39名</b>——先週の時点では<b>9/1〜7でわずか6名</b>でした（44−39＝5名ですので、<b>9/1〜7の6名のうち1名はその後解約され、現在有効分では5名</b>という差です）。つまり<b>この1週間に集中して入ってきた</b>ということです。<br>ただ、経営参謀として申し上げたいのは、増えた事実そのものではありません。<b>入口の中身が入れ替わっています</b>。流入経路（MyASPのfree9）を前週と並べると、記録ありは<b>111名→146名（+35名）</b>。その内訳は<b>direct 3→24名（+21）・x 0→11名（+11）・note 24→27名（+3）</b>、そして<b>reading（読書会）は83名→83名で、1名も増えていません</b>。結果、読書会の構成比は<b>74.8%→56.8%</b>（記録ありベース）へ下がりました。減ったのではなく、<b>読書会が止まっている間に、X・ダイレクトが立ち上がった</b>——これが今週の実像です。時期としては、9/10に荒川さんが9/16読書会のX用LPを「アーカイブ視聴期限7日間・申込者限定」へ修正し、長谷川さ織さんがX告知に入られた動きと重なりますが、<b>因果はまだ検証できていません</b>（free9は自己申告の記録項目です）。ここを確かめられれば、<b>新規500名の入口が1本から2本になる</b>という、方針にとって最も大きい話になります。<br>いっぽうで、課金判定の山が<b>後ろへ、そして大きくなりました</b>。9月は32名→<b>30名</b>（クルー27・リーダー2・メンター1）、10月は82名→<b>119名</b>（クルー104・リーダー4・メンター11）。無料期間中は全資格で114名→<b>149名</b>です。<b>今週入った39名の判定日は、そのまま10月末に積み上がります</b>。課金開始は<b>9名で据え置き</b>——今週、課金開始の数は1名も増えていません（クルーの無料期間終了は9/17から再開します）。今週やることは3つです。<b>①free9のdirect 24名・x 11名が「どこから来たのか」を1回だけ遡って確かめる（X告知・note・読書会LPのどれか）②立ち上がった入口が本物なら、9/16の告知をそこへも流す ③10月119名の判定に向けて、後述カード②の一文修正を「今週中に実装まで」終える</b>。<b>集まり始めた今こそ、受け皿を直す週です。</b></p>
-        <div class="act-prog">進捗率（週初 9/14時点）：3か月累計 オンボーディング完了 <b>0/127名＝0%</b>（担当報告ベース・<b>4週連続で報告待ち</b>／下のバー＝オンボード完了率） ｜ 参考（Stripe実測・9/14朝9:15断面）：予備軍 <b>131名</b>（前週106名・<b>+25名</b>＝新規+41件・解約▲16件／件数と人数の単位差あり）／課金開始 <b>9名</b>（前週9名・±0）／9月の流入 <b>44名</b>（9/1〜14・直近7日39名）／読書会経由の構成比 <b>56.8%</b>（前週74.8%・分母は free9記録あり146名）／<b>先週の宿題</b>：無料期間中を経過日数で3分割＝<b>未報告</b>／<!--TOPPA-CANCEL-D815-START-->解約の8〜15日目集中 <b>85/159件＝53.5%</b>（Stripe実測・全期間の解約サブスク・無料期間開始からの経過を24時間単位で数えた8〜15日目・09/30更新）<!--TOPPA-CANCEL-D815-END-->
+        <div class="act-prog">進捗率（週初 9/14時点）：3か月累計 オンボーディング完了 <b>0/127名＝0%</b>（担当報告ベース・<b>4週連続で報告待ち</b>／下のバー＝オンボード完了率） ｜ 参考（Stripe実測・9/14朝9:15断面）：予備軍 <b>131名</b>（前週106名・<b>+25名</b>＝新規+41件・解約▲16件／件数と人数の単位差あり）／課金開始 <b>9名</b>（前週9名・±0）／9月の流入 <b>44名</b>（9/1〜14・直近7日39名）／読書会経由の構成比 <b>56.8%</b>（前週74.8%・分母は free9記録あり146名）／<b>先週の宿題</b>：無料期間中を経過日数で3分割＝<b>未報告</b>／<!--TOPPA-CANCEL-D815-START-->解約の8〜15日目集中 <b>86/163件＝52.8%</b>（Stripe実測・全期間の解約サブスク・無料期間開始からの経過を24時間単位で数えた8〜15日目・10/01更新）<!--TOPPA-CANCEL-D815-END-->
           <div class="bar"><i style="width:0%"></i></div>
         </div>
         <div class="act-owner">担当：<b>豊留さん・荒川さん</b>＋フォロー：<b>木村学長・柴さん・らむちぃさん</b> ｜ 連動：突破AIタブ A・A2 ｜ ※課金判定日は9/14朝のStripe実測（無料期間中・顧客ユニーク・全資格149名／うちクルー131名）。月別では9月30名・10月119名です</div>
@@ -598,14 +603,14 @@
   <p class="lead">資格ランク別の構成と、月次の入会・更新・退会の内訳です。構成比は<b>顧客DB基準（会員数の正）</b>で表示し、MyASP配信リストは参考として併記します。<b>クルー層が全体の約半分</b>——ここをメンター／リーダーへ引き上げる階段（アップグレード動線）が伸びしろです。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit" target="_blank" rel="noopener">① PABLOS資格者一覧（MyASP）</a></div>
 
-  <div class="sec"><span class="badge">A</span><h2>ランク構成</h2><span class="note">総会員 <b id="rk-base">—</b>名（顧客DB基準＝会員数の正）／配信リスト（週刊パブロス購読者）<span class="ml-total">719</span>名 併記</span></div>
+  <div class="sec"><span class="badge">A</span><h2>ランク構成</h2><span class="note">総会員 <b id="rk-base">—</b>名（顧客DB基準＝会員数の正）／配信リスト（週刊パブロス購読者）<span class="ml-total">737</span>名 併記</span></div>
   <div class="grid g2">
     <div class="chart"><h3>資格ランク別 構成比（顧客DB基準・<span class="mbym">2026年7月</span>末）</h3><div id="chart-donut"></div>
       <div class="legend" id="rk-legend"></div>
-      <div class="legend" style="margin-top:6px;padding-top:6px;border-top:1px dashed #dde3ec">配信リスト（MyASP・参考）<span class="ml-total">719</span>名：
-        <span><i class="dot b-mentor"></i>メンター 43（6.0%）</span>
-        <span><i class="dot b-leader"></i>リーダー 27（3.8%）</span>
-        <span><i class="dot b-crew"></i>クルー 646（89.8%）</span>
+      <div class="legend" style="margin-top:6px;padding-top:6px;border-top:1px dashed #dde3ec">配信リスト（MyASP・参考）<span class="ml-total">737</span>名：
+        <span><i class="dot b-mentor"></i>メンター 43（5.8%）</span>
+        <span><i class="dot b-leader"></i>リーダー 27（3.7%）</span>
+        <span><i class="dot b-crew"></i>クルー 664（90.1%）</span>
       </div>
     </div>
     <div class="chart"><h3>月別 入会の資格ランク内訳（MyASP配信リスト）</h3><div id="chart-stack"></div>
@@ -636,26 +641,26 @@
 </section></div>
 <section class="tab" id="rank">
   <p class="lead">Stripeの会費の決済だけで数えた、<b>2026年1月からの会員の月次推移</b>です（顧客DB・マイスピーは使いません）。更新 <span id="smr-upd">—</span></p>
-  <div class="sec"><span class="badge">A</span><h2>会員の月次推移（Stripe決済のみ）</h2><span class="note">単位：名・円／当月は進行中</span></div>
+  <div class="sec"><span class="badge">A</span><h2>会員の月次推移（Stripe決済のみ）</h2><span class="note">単位：名・円／在籍は月末時点（当月は本日時点）</span></div>
   <div class="tbl-wrap">
     <table id="tbl-smonth">
       <thead><tr>
-        <th class="l">年月</th><th>在籍</th><th>メンター</th><th>リーダー</th><th>クルー</th><th>サポーター</th>
-        <th>新規</th><th>復帰</th><th>離脱</th><th>純増減</th><th>会費売上</th>
+        <th class="l">年月</th><th>在籍（名）</th><th>メンター</th><th>リーダー</th><th>クルー</th><th>サポーター</th>
+        <th>新規（名）</th><th>復帰（名）</th><th>離脱（名）</th><th>純増減（名）</th><th>会費売上（円）</th>
       </tr></thead>
       <tbody></tbody>
     </table>
   </div>
   <div class="callout" style="font-size:12px">
-    <b>在籍</b>＝その月に会費の決済がある方（月払い）＋年払いの有効期間（決済した月から12か月）に入っている方。年払いを取りこぼさないよう、決済は2025年1月から読んでいます。<br>
-    <b>新規</b>＝2025年1月以降で初めて在籍した方／<b>復帰</b>＝前月は在籍がなく、それ以前に在籍があった方／<b>離脱</b>＝前月は在籍があり、その月は在籍がない方／<b>純増減</b>＝在籍の前月差。<br>
-    <b>会費売上</b>＝その月に決済された会費の合計（返金分を差し引き）。講座・イベントの売上は「決済サービス別」タブをご覧ください。<br>
-    <b>当月（進行中）</b>は、月払いの方の決済日がまだ来ていないため、在籍と離脱が月末に向けて埋まっていきます。月の途中で「離脱」と読まないでください。
+    <b>在籍</b>＝その月の末日時点で、会費の有効期間に入っている方です（当月は本日時点）。有効期間は、月払いが決済日から1か月（＋猶予5日）、年払いが決済日から1年後の同じ日の前日までです。年払いを取りこぼさないよう、決済は2025年1月から読んでいます。<br>
+    <b>新規</b>＝その月に初めて会費を決済した方（2025年1月以降で初めて）／<b>復帰</b>＝前月末は在籍がなく、それ以前に会費の決済があった方／<b>離脱</b>＝前月末は在籍があり、その月末は在籍がない方／<b>純増減</b>＝在籍の前月差（＝新規＋復帰−離脱）。<br>
+    <b>会費売上</b>＝その月に決済された会費の合計です（返金した額は、決済した月から差し引いています）。<span id="smr-offlist"></span>講座・イベントの売上は「決済サービス別」タブをご覧ください。<br>
+    <b>当月</b>は本日時点の途中経過です。月末に確定します。
   </div>
 </section>
 
 <!-- ================= WEEK ================= -->
-<section class="tab" id="week">
+<section hidden data-hidden="Stripe決済版では非表示" id="week-old">
   <p class="lead">週次の純増減トレンドです。直近<b>7/20週は -6</b>（退会7）と初めてマイナスに転じました。増減の「山と谷」を見て、施策タイミングと退会集中週を突き合わせます。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit" target="_blank" rel="noopener">① PABLOS資格者一覧（MyASP）</a></div>
 
@@ -680,7 +685,7 @@
 </section>
 
 <!-- ================= LONGTERM ================= -->
-<section class="tab" id="longterm">
+<section hidden data-hidden="Stripe決済版では非表示" id="longterm-old">
   <p class="lead"><b>顧客DBマスター（購入者・資格有効期限ベース）</b>による長期の会員推移です（<span id="lt-range">2024年6月〜2026年7月・26か月</span>／集計日 <span id="lt-upd">2026-08-03</span>）。<b>ホーム側のMyASP購読者ベースとは母数の定義が異なります</b>——こちらは「有効期限内に在籍していた実会員数」です。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://docs.google.com/spreadsheets/d/191fhWA6D_JAzlL0VdPiaDuWt-SBqr1F7bo48OSazpqc/edit" target="_blank" rel="noopener">② 会員資格 月次増減マトリクス（DBマスター）</a></div>
 
@@ -727,7 +732,7 @@
 </section>
 
 <!-- ================= TOPPA ================= -->
-<section class="tab" id="toppa">
+<section class="tab" id="toppa"><div class="callout warn" style="font-size:12px;margin:0 0 12px"><b>このタブは、元の司令塔から引き継いだ内容です。</b>カードの数字はStripeのサブスクの実測（顧客ID・サブスク単位）で、ホームS2・S3（メールアドレス単位）とは数名ずれます。本文の一部には、顧客DB・マイスピーと突き合わせた当時の記述が含まれます。文中の「整合性チェック」タブは、<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/" target="_blank" rel="noopener">元の司令塔</a>にあります。</div>
   <p class="lead"><b>突破Aiクルー</b>はMyASPのシナリオ管理メニュー上の新規流入チャネルです。7/17〜7/20の集中入会で立ち上がり、8月は<b>クルー流入の主力チャネル</b>になりました（実数は下のカード群＝毎朝自動更新を正とします）。ここを常設ファネル化できれば、クルー母数の安定供給源になります。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit" target="_blank" rel="noopener">① PABLOS資格者一覧（MyASP）</a><a class="src" href="https://mokumoku358.biz/toppa_ai04/" target="_blank" rel="noopener">入口LP：突破Ai</a><a class="src" href="https://m.pablos.co.jp/member/item_detail/BDcT9BGZ" target="_blank" rel="noopener">シナリオ：突破Aiクルー</a></div>
 
@@ -738,12 +743,12 @@
   <div class="sec"><span class="badge">A</span><h2>突破Aiクルー 新規流入</h2><span class="note">LP→Stripe決済登録（14日＋30日無料）→シナリオ「突破Aiクルー」</span></div>
   <div class="grid g3">
     <!--TOPPA-INFLOW-START-->
-    <div class="card kpi accent-top at-crew"><div class="label">流入（Stripeサブスク登録）</div><div class="num" style="color:var(--crew)">246<span class="unit">名</span></div><div class="foot">2026/09/30実測・クルー有効（無料期間中）ユニーク。登録累計417件・解約143件・毎朝自動更新</div></div>
-    <div class="card kpi accent-top"><div class="label">クルー予備軍（無料期間中）</div><div class="num">246<span class="unit">名</span></div><div class="foot">14日間の無料体験＋初月1か月無料（計44日）・課金開始28名。無料期間終了は9/30〜11/13に分散（今月末まで5名＝<b>サブスク単位・クルーのみ</b>。下の課金判定日カレンダーは顧客ユニーク・全資格のため定義が異なります）</div></div>
-    <div class="card kpi accent-top at-mentor"><div class="label">9月の流入（9/1–30実測）</div><div class="num" style="color:var(--crew)">184<span class="unit">名</span></div><div class="foot">直近7日で48名（Stripeサブスク登録日・現在有効分。前月登録は62名）</div></div>
+    <div class="card kpi accent-top at-crew"><div class="label">流入（Stripeサブスク登録）</div><div class="num" style="color:var(--crew)">244<span class="unit">名</span></div><div class="foot">2026/10/01実測・クルー有効（無料期間中）ユニーク。登録累計426件・解約147件・毎朝自動更新</div></div>
+    <div class="card kpi accent-top"><div class="label">クルー予備軍（無料期間中）</div><div class="num">244<span class="unit">名</span></div><div class="foot">14日間の無料体験＋初月1か月無料（計44日）・課金開始35名。無料期間終了は10/1〜11/13に分散（今月末まで146名＝<b>サブスク単位・クルーのみ</b>。下の課金判定日カレンダーは顧客ユニーク・全資格のため定義が異なります）</div></div>
+    <div class="card kpi accent-top at-mentor"><div class="label">10月の流入（10/1–1実測）</div><div class="num" style="color:var(--crew)">0<span class="unit">名</span></div><div class="foot">直近7日で53名（Stripeサブスク登録日・現在有効分。前月登録は192名）</div></div>
     <div class="card accent-top at-crew" style="grid-column:1/-1"><div class="label">課金判定日カレンダー（無料期間の終了月・全資格）</div>
-<div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:6px"><div style="min-width:150px"><div class="label">2026年9月</div><div class="num" style="color:var(--crew)">6<span class="unit">名</span></div><div class="foot">クルー5・メンター1</div></div><div style="min-width:150px"><div class="label">2026年10月</div><div class="num" style="color:var(--crew)">166<span class="unit">名</span></div><div class="foot">クルー151・リーダー5・メンター10</div></div><div style="min-width:150px"><div class="label">2026年11月</div><div class="num" style="color:var(--crew)">94<span class="unit">名</span></div><div class="foot">クルー90・リーダー2・メンター2</div></div></div>
-<div class="foot">2026/09/30実測・Stripeサブスク無料期間中266名（課金開始前・顧客ユニーク・全資格。うちクルー246名）の無料期間終了日を月別集計。この月に継続可否＝課金判定が来ます。解約されない限り月額課金が始まります・毎朝自動更新</div></div>
+<div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:6px"><div style="min-width:150px"><div class="label">2026年10月</div><div class="num" style="color:var(--crew)">161<span class="unit">名</span></div><div class="foot">クルー146・リーダー5・メンター10</div></div><div style="min-width:150px"><div class="label">2026年11月</div><div class="num" style="color:var(--crew)">105<span class="unit">名</span></div><div class="foot">クルー98・リーダー4・メンター3</div></div></div>
+<div class="foot">2026/10/01実測・Stripeサブスク無料期間中266名（課金開始前・顧客ユニーク・全資格。うちクルー244名）の無料期間終了日を月別集計。この月に継続可否＝課金判定が来ます。解約されない限り月額課金が始まります・毎朝自動更新</div></div>
     <!--TOPPA-INFLOW-END-->
   </div>
 
@@ -764,7 +769,7 @@
     <div class="card kpi accent-top"><div class="label">❓ 未記録</div><div class="num" id="tr-norec">—</div><div class="foot">free9未入力</div></div>
   </div>
   <div class="callout" id="toppa-routes-note" style="margin-top:10px">
-    <b>実測 281名</b>（free9集計・更新 2026/09/30）。集計対象はシナリオ「突破Aiクルー」の有効購読者281名（解約済み176名は除外・同一メールの重複2組を含む）。うちfree9記録あり275名＝reading 112・note 29・line 1・x 28・direct 97・facebook 5・rokuga 1・ad 2、未記録6名。MyASP MCP実測・毎朝自動更新。
+    <b>実測 289名</b>（free9集計・更新 2026/10/01）。集計対象はシナリオ「突破Aiクルー」の有効購読者289名（解約済み180名は除外・同一メールの重複2組を含む）。うちfree9記録あり283名＝reading 115・note 29・line 1・x 28・direct 100・facebook 5・rokuga 1・ad 4、未記録6名。MyASP MCP実測・毎朝自動更新。
   </div>
 
   <div class="callout">
@@ -788,12 +793,13 @@
     <table class="mono" id="tu-hist" style="margin-top:6px"></table>
   </div>
   <div class="callout" id="toppa-upsell-note" style="margin-top:10px">
-    <b>クルー246・リーダー7・メンター13</b>（計266名・アップセル率7.5%・更新 2026/09/30）。Stripeサブスク無料期間中（課金開始前・顧客ユニーク・全資格）の資格別内訳です。課金判定日カレンダー／課金判定日リスト（②増減表）と同一定義・毎朝自動更新。推移は日次スナップショットとして蓄積します（2026/09/02開始）。
+    <b>クルー244・リーダー9・メンター13</b>（計266名・アップセル率8.3%・更新 2026/10/01）。Stripeサブスク無料期間中（課金開始前・顧客ユニーク・全資格）の資格別内訳です。課金判定日カレンダー／課金判定日リスト（②増減表）と同一定義・毎朝自動更新。推移は日次スナップショットとして蓄積します（2026/09/02開始）。
   </div>
 </section>
 
 <!-- ================= MAIL ================= -->
 <section class="tab" id="mail">
+  <div class="callout warn" style="font-size:12px;margin:0 0 12px"><b>このタブは、元の司令塔から引き継いだ内容です。</b>文中の「会員数の正」「当残」などの会員数は顧客DB基準で書かれた当時の記述で、<b>Stripe決済版の会員数とは数え方が違います</b>。会員数は「ホーム」と「会員内訳」（Stripe決済のみ）をご覧ください。文中の「長期推移」「整合性チェック」タブは、<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/" target="_blank" rel="noopener">元の司令塔</a>にあります。</div>
   <p class="lead">MyASP配信のエラー率監視（直近10日）です。<b>サマリーカードと下表は日次実測から毎朝自動計算</b>しています。過去実績ではエラー増加日は特定メールへの集中が多いため、要注視日はメール単位で原因を特定し局所対処します（例：7/20の0.45%は「エキスパート読書会のご案内3」に集中→宛先クリーニングで対処）。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit" target="_blank" rel="noopener">① PABLOS資格者一覧（MyASP配信エラー監視）</a></div>
 
@@ -818,6 +824,7 @@
 
 <!-- ================= LOG ================= -->
 <section class="tab" id="log">
+  <div class="callout warn" style="font-size:12px;margin:0 0 12px"><b>このタブは、元の司令塔から引き継いだ内容です。</b>文中の「会員数の正」「当残」などの会員数は顧客DB基準で書かれた当時の記述で、<b>Stripe決済版の会員数とは数え方が違います</b>。会員数は「ホーム」と「会員内訳」（Stripe決済のみ）をご覧ください。文中の「長期推移」「整合性チェック」タブは、<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/" target="_blank" rel="noopener">元の司令塔</a>にあります。</div>
   <p class="lead">資格者一覧の入退会アクティビティログ（2026年8月分）です。<b>個人情報保護のためメールアドレスはマスク表示</b>しています。退会6名の離脱パターン（全件がGmail変更に伴う解除である点）が読み取れます。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit" target="_blank" rel="noopener">① PABLOS資格者一覧</a><a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit#gid=0" target="_blank" rel="noopener">📊 詳細スプレッドシート（会員アクション詳細ログ）を開く</a></div>
 
@@ -843,6 +850,7 @@
 
 <!-- ================= BOOKCLUB ================= -->
 <section class="tab" id="bookclub">
+  <div class="callout warn" style="font-size:12px;margin:0 0 12px"><b>このタブは、元の司令塔から引き継いだ内容です。</b>文中の「会員数の正」「当残」などの会員数は顧客DB基準で書かれた当時の記述で、<b>Stripe決済版の会員数とは数え方が違います</b>。会員数は「ホーム」と「会員内訳」（Stripe決済のみ）をご覧ください。文中の「長期推移」「整合性チェック」タブは、<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/" target="_blank" rel="noopener">元の司令塔</a>にあります。</div>
   <p class="lead"><b>エキスパート読書会</b>の分析ビューです。3つの視点をボタンで切り替えられます。<b>個人情報を含まないハッシュ化済みデータ（HMAC-SHA256・プロジェクト固有salt）</b>から集計しています（2025年6月26日回はMyASP上のデータ不整合のため未集計）。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://tkaska-cell.github.io/pablos-bookclub-dashboard/dashboard.html" target="_blank" rel="noopener">📊 元の読書会ダッシュボード（全図表・詳細）を開く</a></div>
 
@@ -927,6 +935,7 @@
 
 <!-- ================= CAMPUS ================= -->
 <section class="tab" id="campus">
+  <div class="callout warn" style="font-size:12px;margin:0 0 12px"><b>このタブは、元の司令塔から引き継いだ内容です。</b>文中の「会員数の正」「当残」などの会員数は顧客DB基準で書かれた当時の記述で、<b>Stripe決済版の会員数とは数え方が違います</b>。会員数は「ホーム」と「会員内訳」（Stripe決済のみ）をご覧ください。文中の「長期推移」「整合性チェック」タブは、<a class="src" href="https://kojinishimura0605-gif.github.io/pablos-dashboard/" target="_blank" rel="noopener">元の司令塔</a>にあります。</div>
   <p class="lead"><b>PABLOS-Campus ダッシュボード</b>（Looker Studio）の主要数値です。会員基盤（UMU／Campus）側の集計で、<b>MyASP・DBマスターとは別系統</b>の母数です。数値は共有いただいた画面の実測値を転記しています。</p>
   <div class="srcbar">データ出典：<a class="src" href="https://datastudio.google.com/u/0/reporting/12aba3c6-1084-4fa2-beea-ae78bf2f09d8/page/p_kftto1vlwd" target="_blank" rel="noopener">📊 Campus 資格者メンバー数（Looker Studio）を開く</a></div>
 
@@ -1033,9 +1042,9 @@
 <!-- ================= STRIPE SERVICE (svc-pipeline.py が毎朝再生成) ================= -->
 <section class="tab" id="stripesvc">
 <!--SVCTAB-START-->
-  <p class="lead"><b>Stripe決済のサービス別集計</b>です。Stripe API（読み取り専用キー）から2026年1月1日以降の全決済を実測取得し、説明欄の機械判定でカテゴリに区分しました（推測・補完なし）。各カテゴリと合計は<b>受注</b>（決済成功ベース・後日返金分を含む）、<b>返金は返金処理日の月に▲計上</b>（一部返金含む）、<b>売上＝受注−返金</b>です。金額と件数は必ずセットで見ます。<b>毎朝9時に前日までの実測へ自動更新</b>します。<a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=integrity]').click();return false;">整合性チェックタブ</a>の「⑥ Stripe決済」（直近30日）とは集計期間が異なります。</p>
-  <div class="srcbar">データ出典：<a class="src" href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener">💳 Stripe取引一覧</a><span class="src">データ断面 2026/09/29 まで（2026/09/30 15:59 集計）</span></div>
-  <div class="sec"><span class="badge">A</span><h2>月次推移（2026年1月度〜9月度・成功決済）</h2><span class="note">各セル＝件数・金額／最新月は前日まで</span></div>
+  <p class="lead"><b>Stripe決済のサービス別集計</b>です。Stripe API（読み取り専用キー）から2026年1月1日以降の全決済を実測取得し、説明欄の機械判定でカテゴリに区分しました（推測・補完なし）。各カテゴリと合計は<b>受注</b>（決済成功ベース・後日返金分を含む）、<b>返金は返金処理日の月に▲計上</b>（一部返金含む）、<b>売上＝受注−返金</b>です。金額と件数は必ずセットで見ます。<b>毎朝9時に前日までの実測へ自動更新</b>します。整合性チェックタブ（元の司令塔）の「⑥ Stripe決済」（直近30日）とは集計期間が異なります。</p>
+  <div class="srcbar">データ出典：<a class="src" href="https://dashboard.stripe.com/payments" target="_blank" rel="noopener">💳 Stripe取引一覧</a><span class="src">データ断面 2026/09/30 まで（2026/10/01 09:24 集計）</span></div>
+  <div class="sec"><span class="badge">A</span><h2>月次推移（2026年1月度〜9月度・成功決済）</h2><span class="note">各セル＝件数・金額</span></div>
   <div class="tbl-wrap">
     <table class="mono">
       <thead><tr><th class="l">月度</th><th>講座・イベント系</th><th>月会員資格系</th><th>図書館・第6期リスキリング系</th><th>Invoice払い</th><th>その他</th><th>合計（受注）</th><th>返金</th><th>売上（返金後）</th></tr></thead>
@@ -1048,20 +1057,20 @@
         <tr><td class="l">2026/06</td><td>—</td><td>68件・¥752,400</td><td>61件・¥1,049,400</td><td>—</td><td>—</td><td>129件・¥1,801,800</td><td style="color:var(--neg)">▲3件・▲¥59,400</td><td><b>126件・¥1,742,400</b></td></tr>
         <tr><td class="l">2026/07</td><td>49件・¥2,937,100</td><td>122件・¥1,141,800</td><td>60件・¥1,029,600</td><td>—</td><td>—</td><td>231件・¥5,108,500</td><td style="color:var(--neg)">▲1件・▲¥5,500</td><td><b>230件・¥5,103,000</b></td></tr>
         <tr><td class="l">2026/08</td><td>66件・¥3,850,600</td><td>137件・¥1,452,000</td><td>57件・¥970,200</td><td>8件・¥102,300</td><td>—</td><td>268件・¥6,375,100</td><td style="color:var(--neg)">▲1件・▲¥46,200</td><td><b>267件・¥6,328,900</b></td></tr>
-        <tr><td class="l">2026/09<span style="font-size:11px;color:var(--muted)">（〜9/29）</span></td><td>58件・¥3,948,200</td><td>117件・¥1,323,300</td><td>57件・¥970,200</td><td>23件・¥82,500</td><td>—</td><td>255件・¥6,324,200</td><td style="color:var(--neg)">▲2件・▲¥33,000</td><td><b>253件・¥6,291,200</b></td></tr>
-        <tr style="background:var(--soft);font-weight:800"><td class="l">累計</td><td>358件・¥11,639,500</td><td>491件・¥5,538,720</td><td>585件・¥11,035,200</td><td>31件・¥184,800</td><td>3件・¥17,600</td><td>1,468件・¥28,415,820</td><td style="color:var(--neg)">▲16件・▲¥232,200</td><td>1,452件・¥28,183,620</td></tr>
+        <tr><td class="l">2026/09</td><td>58件・¥3,948,200</td><td>136件・¥1,488,300</td><td>59件・¥1,009,800</td><td>31件・¥125,400</td><td>—</td><td>284件・¥6,571,700</td><td style="color:var(--neg)">▲2件・▲¥33,000</td><td><b>282件・¥6,538,700</b></td></tr>
+        <tr style="background:var(--soft);font-weight:800"><td class="l">累計</td><td>358件・¥11,639,500</td><td>510件・¥5,703,720</td><td>587件・¥11,074,800</td><td>39件・¥227,700</td><td>3件・¥17,600</td><td>1,497件・¥28,663,320</td><td style="color:var(--neg)">▲16件・▲¥232,200</td><td>1,481件・¥28,431,120</td></tr>
       </tbody>
     </table>
   </div>
   <div class="callout"><b>受注と売上の読み方：</b>各カテゴリと「合計（受注）」は決済した月に計上し、後日返金された分もそのまま含みます。「返金」は<b>返金処理をした月</b>に▲計上（一部返金含む）するため、決済月と返金月がズレることがあります。「売上＝受注−返金」が手残りベースの実測です（売上件数＝受注件数−全額返金件数。一部返金は金額のみ控除し件数は引きません）。</div>
-  <div class="sec"><span class="badge">B</span><h2>9月のサマリー（9/1〜9/29・進行中）：受注 255件・¥6,324,200　<span style="color:var(--neg)">返金▲2件・▲¥33,000</span>　売上 253件・¥6,291,200</h2><span class="note">受注（決済成功）ベース。未完了・失敗は下記C</span></div>
+  <div class="sec"><span class="badge">B</span><h2>9月のサマリー（9/1〜9/30・確定）：受注 284件・¥6,571,700　<span style="color:var(--neg)">返金▲2件・▲¥33,000</span>　売上 282件・¥6,538,700</h2><span class="note">受注（決済成功）ベース。未完了・失敗は下記C</span></div>
   <div class="grid g4">
-    <div class="card kpi accent-top"><div class="label">講座・イベント系</div><div class="num" style="color:var(--navy)">58<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥3,948,200</div><div class="foot">受注額の62.4%</div></div>
-    <div class="card kpi accent-top"><div class="label">月会員資格系</div><div class="num" style="color:var(--navy)">117<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥1,323,300</div><div class="foot">件数の45.9%</div></div>
-    <div class="card kpi accent-top"><div class="label">パブロス図書館・第6期リスキリング系</div><div class="num" style="color:var(--navy)">57<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥970,200</div><div class="foot">明細は下記B3</div></div>
-    <div class="card kpi accent-top"><div class="label">Invoice払い（サブスク自動課金）</div><div class="num" style="color:var(--navy)">23<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥82,500</div><div class="foot">突破Ai クルー（Stripe直販）×22／突破Ai リーダー（Stripe直販）×1</div></div>
+    <div class="card kpi accent-top"><div class="label">講座・イベント系</div><div class="num" style="color:var(--navy)">58<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥3,948,200</div><div class="foot">受注額の60.1%</div></div>
+    <div class="card kpi accent-top"><div class="label">月会員資格系</div><div class="num" style="color:var(--navy)">136<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥1,488,300</div><div class="foot">件数の47.9%</div></div>
+    <div class="card kpi accent-top"><div class="label">パブロス図書館・第6期リスキリング系</div><div class="num" style="color:var(--navy)">59<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥1,009,800</div><div class="foot">明細は下記B3</div></div>
+    <div class="card kpi accent-top"><div class="label">Invoice払い（サブスク自動課金）</div><div class="num" style="color:var(--navy)">31<span class="unit">件</span></div><div class="num" style="color:var(--navy);font-size:21px;margin:0 0 4px">¥125,400</div><div class="foot">突破Ai クルー（Stripe直販）×29／突破Ai メンター（Stripe直販）×1／突破Ai リーダー（Stripe直販）×1</div></div>
   </div>
-  <div class="callout"><b>内部検算：</b>58＋117＋57＋23＝<b>255件</b>、¥3,948,200＋¥1,323,300＋¥970,200＋¥82,500＝<b>¥6,324,200</b>で合計と一致します。9月の返金は▲2件・▲¥33,000（10X季節の会_2026秋 ¥13,200・既存メンバー更新　月会員 ¥19,800・返金処理日基準）で、売上（返金後）は<b>¥6,291,200</b>です。</div>
+  <div class="callout"><b>内部検算：</b>58＋136＋59＋31＝<b>284件</b>、¥3,948,200＋¥1,488,300＋¥1,009,800＋¥125,400＝<b>¥6,571,700</b>で合計と一致します。9月の返金は▲2件・▲¥33,000（10X季節の会_2026秋 ¥13,200・既存メンバー更新　月会員 ¥19,800・返金処理日基準）で、売上（返金後）は<b>¥6,538,700</b>です。</div>
   <div class="sec"><span class="badge">B1</span><h2>講座・イベント系（58件・¥3,948,200）</h2><span class="note">金額の降順</span></div>
   <div class="tbl-wrap">
     <table class="mono">
@@ -1076,25 +1085,25 @@
       </tbody>
     </table>
   </div>
-  <div class="sec"><span class="badge">B2</span><h2>月会員資格系（117件・¥1,323,300）</h2><span class="note">新規・更新・早期継続などを資格別に合算・金額の降順</span></div>
+  <div class="sec"><span class="badge">B2</span><h2>月会員資格系（136件・¥1,488,300）</h2><span class="note">新規・更新・早期継続などを資格別に合算・金額の降順</span></div>
   <div class="tbl-wrap">
     <table class="mono">
       <thead><tr><th class="l">資格</th><th>件数</th><th>金額</th><th class="l">内訳（件数）</th></tr></thead>
       <tbody>
-        <tr><td class="l"><span class="dot b-mentor"></span> メンター</td><td>35</td><td>¥726,000</td><td class="l">早期継続特典15／初月無料入学金免除9／初月無料更新5／新規入学月会員　資格（メンター）4／更新2</td></tr>
-        <tr><td class="l"><span class="dot b-leader"></span> リーダー</td><td>33</td><td>¥346,500</td><td class="l">早期継続特典13／初月無料入学金免除10／初月無料更新4／更新3／新規入学月会員　資格（リーダー）3</td></tr>
-        <tr><td class="l"><span class="dot b-crew"></span> クルー</td><td>45</td><td>¥171,600</td><td class="l">早期継続特典17／新規GPTs付_初月無料10／更新9／初月無料更新7／初月無料入学金免除1／新規入学月会員　資格（クルー）1</td></tr>
+        <tr><td class="l"><span class="dot b-mentor"></span> メンター</td><td>41</td><td>¥828,300</td><td class="l">早期継続特典15／初月無料更新10／初月無料入学金免除10／新規入学月会員　資格（メンター）4／更新2</td></tr>
+        <tr><td class="l"><span class="dot b-leader"></span> リーダー</td><td>36</td><td>¥376,200</td><td class="l">早期継続特典13／初月無料入学金免除10／初月無料更新7／更新3／新規入学月会員　資格（リーダー）3</td></tr>
+        <tr><td class="l"><span class="dot b-crew"></span> クルー</td><td>55</td><td>¥204,600</td><td class="l">早期継続特典17／新規GPTs付_初月無料15／初月無料更新12／更新9／初月無料入学金免除1／新規入学月会員　資格（クルー）1</td></tr>
         <tr><td class="l">その他</td><td>4</td><td>¥79,200</td><td class="l">既存メンバー更新4</td></tr>
-        <tr style="background:var(--soft);font-weight:800"><td class="l">小計</td><td>117</td><td>¥1,323,300</td><td class="l"></td></tr>
+        <tr style="background:var(--soft);font-weight:800"><td class="l">小計</td><td>136</td><td>¥1,488,300</td><td class="l"></td></tr>
       </tbody>
     </table>
   </div>
-  <div class="sec"><span class="badge">B3</span><h2>パブロス図書館・第6期リスキリング系（57件・¥970,200）</h2><span class="note">金額の降順</span></div>
+  <div class="sec"><span class="badge">B3</span><h2>パブロス図書館・第6期リスキリング系（59件・¥1,009,800）</h2><span class="note">金額の降順</span></div>
   <div class="tbl-wrap">
     <table class="mono">
       <thead><tr><th class="l">サービス</th><th>件数</th><th>金額</th></tr></thead>
       <tbody>
-        <tr><td class="l">【5新規】パブロス図書館リスキリング事業メンバー (メンターのみ）</td><td>13</td><td>¥257,400</td></tr>
+        <tr><td class="l">【5新規】パブロス図書館リスキリング事業メンバー (メンターのみ）</td><td>15</td><td>¥297,000</td></tr>
         <tr><td class="l">継続　第6期デジタル図書館パブロスメンター</td><td>13</td><td>¥257,400</td></tr>
         <tr><td class="l">新規　第6期デジタル図書館パブロスメンター</td><td>12</td><td>¥237,600</td></tr>
         <tr><td class="l">継続　第6期デジタル図書館パブロスリーダー</td><td>10</td><td>¥99,000</td></tr>
@@ -1102,16 +1111,16 @@
         <tr><td class="l">【第６期】パブロス図書館リスキリング事業メンバー（全資格）</td><td>3</td><td>¥33,000</td></tr>
         <tr><td class="l">【5新規】パブロス図書館リスキリング事業メンバー（全資格）</td><td>3</td><td>¥26,400</td></tr>
         <tr><td class="l">【第６期】パブロス図書館リスキリング事業メンバー (メンターのみ）</td><td>1</td><td>¥19,800</td></tr>
-        <tr style="background:var(--soft);font-weight:800"><td class="l">小計</td><td>57</td><td>¥970,200</td></tr>
+        <tr style="background:var(--soft);font-weight:800"><td class="l">小計</td><td>59</td><td>¥1,009,800</td></tr>
       </tbody>
     </table>
   </div>
   <div class="sec"><span class="badge">C</span><h2>その他：未完了・カード決済失敗（9月・ご参考）</h2><span class="note">同一顧客の再試行を含むため両者は重複あり</span></div>
-  <div class="srcbar"><a class="src" href="#" onclick="dlUnpaid();return false;">⬇ 未決済一覧CSVをダウンロード（86行：日時・種別・サービス・金額・メール・理由・9月の成功有無）</a><span class="src">公開版のメールはマスク表示（***@ドメイン）</span></div>
+  <div class="srcbar"><a class="src" href="#" onclick="dlUnpaid();return false;">⬇ 未決済一覧CSVをダウンロード（88行：日時・種別・サービス・金額・メール・理由・9月の成功有無）</a><span class="src">公開版のメールはマスク表示（***@ドメイン）</span></div>
   <div class="grid g2">
     <div class="tbl-wrap">
       <table class="mono">
-        <thead><tr><th class="l">未完了（51件）</th><th>件数</th></tr></thead>
+        <thead><tr><th class="l">未完了（52件）</th><th>件数</th></tr></thead>
         <tbody>
           <tr><td class="l">継続　第6期デジタル図書館パブロスメンター</td><td>16</td></tr>
           <tr><td class="l">20260905‗フューチャーマッピング・アドバンスト講座</td><td>8</td></tr>
@@ -1122,6 +1131,7 @@
           <tr><td class="l">月会員　資格（クルー）初月無料更新</td><td>3</td></tr>
           <tr><td class="l">新規　第6期デジタル図書館パブロスメンター</td><td>2</td></tr>
           <tr><td class="l">2026秋‗フューチャーマッピング・アドバンスト＋マスター講座</td><td>2</td></tr>
+          <tr><td class="l">新規　GPTs付_月会員初月無料　資格（クルー）</td><td>1</td></tr>
           <tr><td class="l">Invoice 50FO7D95-0002</td><td>1</td></tr>
           <tr><td class="l">新規入学月会員資格（メンター）初月無料入学金免除</td><td>1</td></tr>
           <tr><td class="l">既存メンバー更新　月会員</td><td>1</td></tr>
@@ -1130,7 +1140,7 @@
     </div>
     <div class="tbl-wrap">
       <table class="mono">
-        <thead><tr><th class="l">カード失敗（35件）</th><th>件数</th></tr></thead>
+        <thead><tr><th class="l">カード失敗（36件）</th><th>件数</th></tr></thead>
         <tbody>
           <tr><td class="l">継続　第6期デジタル図書館パブロスメンター</td><td>16</td></tr>
           <tr><td class="l">月会員　資格（メンター）初月無料更新</td><td>5</td></tr>
@@ -1138,6 +1148,7 @@
           <tr><td class="l">月会員　資格（クルー）早期継続特典</td><td>3</td></tr>
           <tr><td class="l">月会員　資格（クルー）初月無料更新</td><td>3</td></tr>
           <tr><td class="l">新規　第6期デジタル図書館パブロスメンター</td><td>2</td></tr>
+          <tr><td class="l">新規　GPTs付_月会員初月無料　資格（クルー）</td><td>1</td></tr>
           <tr><td class="l">Invoice 50FO7D95-0002</td><td>1</td></tr>
           <tr><td class="l">新規入学月会員資格（メンター）初月無料入学金免除</td><td>1</td></tr>
           <tr><td class="l">20260905‗フューチャーマッピング・アドバンスト講座</td><td>1</td></tr>
@@ -1145,12 +1156,12 @@
       </table>
     </div>
   </div>
-  <div class="callout warn"><b>回収の実務</b>（カード更新の個別連絡→再決済）は<a class="src" href="#" onclick="document.querySelector('#tabs button[data-t=integrity]').click();return false;">整合性チェックタブ</a>の「E 未決済者一覧」と同じ動線です。CSVの「成功有無」列＝同じメールで9月中に成功決済がある行は、再試行で回収済みの可能性が高い順に対応を後回しにできます。</div>
+  <div class="callout warn"><b>回収の実務</b>（カード更新の個別連絡→再決済）は整合性チェックタブ（元の司令塔）の「E 未決済者一覧」と同じ動線です。CSVの「成功有無」列＝同じメールで9月中に成功決済がある行は、再試行で回収済みの可能性が高い順に対応を後回しにできます。</div>
 <!--SVCTAB-END-->
 </section>
 
 <!-- ================= INTEGRITY ================= -->
-<section class="tab" id="integrity">
+<section hidden data-hidden="Stripe決済版では非表示" id="integrity-old">
   <p class="lead"><b>数値整合性チェック</b>です。PABLOSの会員数は<b>6系統のデータソース</b>で母数の定義が異なり、単純比較すると「どれが正しいの？」になります。ここで<b>何が一致すべきで／何は一致しなくて当然か</b>を切り分けます（<code>data-integrity-analyst</code>準拠）。各ソース名から原本へ飛べます。</p>
   <div class="srcbar">データ出典：
     <a class="src" href="https://docs.google.com/spreadsheets/d/1P-wkTq9eqJKgKnqAD8QHphULwfrRYxAVpiXBqmsNp3Q/edit" target="_blank" rel="noopener">① MyASP資格者一覧</a>
@@ -1268,9 +1279,9 @@
 </main>
 
 <footer>
-  データ出典：PABLOS 資格者一覧スプレッドシート（実測値のみ・推測補完なし／<code>data-integrity-analyst</code>準拠）。
-  本ファイルは会員個人情報を含むため、外部公開・共有は行わずローカルでの内部運用を前提としています。
-  数値の再取得・図表の焼き直しはスプレッドシート更新後に再生成してください。
+  データ出典：ホーム・会員内訳・決済サービス別・突破AIはStripe決済。引き継いだタブは元の司令塔の各台帳（実測値のみ・推測補完なし／<code>data-integrity-analyst</code>準拠）。
+  本ページは、Stripe決済だけで会員数を数えた「Stripe決済版」です。氏名とメールアドレスはマスクしています。URLをご存じの方だけにお伝えしている内部資料ですので、転送・転載はお控えください。
+  
 </footer>
 
 <script>
@@ -1281,7 +1292,7 @@ const monthly=[
   {ym:'2026/06',net:39,mj:8,mr:1,lj:6,lr:2,cj:25,cr:0,sj:0,sr:0,lv:3},
   {ym:'2026/07',net:29,mj:5,mr:3,lj:3,lr:1,cj:26,cr:0,sj:0,sr:0,lv:9},
   {ym:'2026/08',net:280,mj:4,mr:1,lj:3,lr:2,cj:273,cr:0,sj:0,sr:0,lv:3},
-  {ym:'2026/09',net:286,mj:7,mr:2,lj:2,lr:0,cj:283,cr:0,sj:0,sr:0,lv:12},
+  {ym:'2026/09',net:304,mj:7,mr:2,lj:2,lr:0,cj:301,cr:0,sj:0,sr:0,lv:12},
 ];
 const weekly=[
   {w:'2026/05/11週',net:28,mj:7,mr:0,lj:6,lr:0,cj:15,cr:0,lv:0},
@@ -1302,12 +1313,11 @@ const weekly=[
   {w:'2026/08/24週',net:16,mj:1,mr:0,lj:0,lr:1,cj:16,cr:0,lv:2},
   {w:'2026/08/31週',net:13,mj:2,mr:0,lj:0,lr:0,cj:11,cr:0,lv:1},
   {w:'2026/09/07週',net:77,mj:1,mr:0,lj:1,lr:0,cj:75,cr:0,lv:2},
-  {w:'2026/09/14週',net:130,mj:2,mr:1,lj:0,lr:0,cj:126,cr:0,lv:0},
+  {w:'2026/09/14週',net:142,mj:2,mr:1,lj:0,lr:0,cj:138,cr:0,lv:0},
   {w:'2026/09/21週',net:62,mj:2,mr:1,lj:1,lr:0,cj:61,cr:0,lv:3},
-  {w:'2026/09/28週',net:4,mj:0,mr:0,lj:0,lr:0,cj:10,cr:0,lv:6},
+  {w:'2026/09/28週',net:10,mj:0,mr:0,lj:0,lr:0,cj:16,cr:0,lv:6},
 ];
 const mail=[
-  {d:'2026/09/20',tgt:20,total:26314,ok:26289,err:25,rate:0.095,dlv:99.9},
   {d:'2026/09/21',tgt:14,total:47453,ok:47419,err:34,rate:0.072,dlv:99.9},
   {d:'2026/09/22',tgt:12,total:47238,ok:47211,err:25,rate:0.053,dlv:99.9},
   {d:'2026/09/23',tgt:13,total:47677,ok:47648,err:27,rate:0.057,dlv:99.9},
@@ -1317,17 +1327,18 @@ const mail=[
   {d:'2026/09/27',tgt:15,total:53496,ok:53451,err:45,rate:0.084,dlv:99.9},
   {d:'2026/09/28',tgt:12,total:53623,ok:53578,err:45,rate:0.084,dlv:99.9},
   {d:'2026/09/29',tgt:20,total:60467,ok:60406,err:60,rate:0.099,dlv:99.9},
+  {d:'2026/09/30',tgt:20,total:60092,ok:60036,err:54,rate:0.09,dlv:99.9},
 ];
 /*STRIPE-START*/
-const stripe={updated:'2026/09/30',period:'直近30日',
+const stripe={updated:'2026/10/01',period:'直近30日',
   ranks:[
-    {k:'メンター',members:84,charges:85,amount:1670100},
-    {k:'リーダー',members:46,charges:46,amount:475200},
+    {k:'メンター',members:84,charges:84,amount:1650300},
+    {k:'リーダー',members:45,charges:45,amount:465300},
     {k:'クルー',members:55,charges:55,amount:204600},
-    {k:'その他会員',members:44,charges:44,amount:372900}
+    {k:'その他会員',members:57,charges:57,amount:432300}
   ],
-  total:{members:229,charges:230,amount:2722800},
-  course:{members:46,charges:46,amount:3850000}
+  total:{members:241,charges:241,amount:2752500},
+  course:{members:43,charges:43,amount:3553000}
 };
 /*STRIPE-END*/
 /*UNPAID-START*/
@@ -1339,27 +1350,27 @@ const unpaid=[
 ];
 /*UNPAID-END*/
 /*TOPPA-ROUTES-START*/
-const toppaRoutes={updated:'2026/09/30',reading:112,line:1,note:29,x:28,youtube:0,kubota:0,pr:0,direct:97,facebook:5,akagawa:0,rokuga:1,ad:2,norec:6,detail:'集計対象はシナリオ「突破Aiクルー」の有効購読者281名（解約済み176名は除外・同一メールの重複2組を含む）。うちfree9記録あり275名＝reading 112・note 29・line 1・x 28・direct 97・facebook 5・rokuga 1・ad 2、未記録6名。MyASP MCP実測・毎朝自動更新。'};
+const toppaRoutes={updated:'2026/10/01',reading:115,line:1,note:29,x:28,youtube:0,kubota:0,pr:0,direct:100,facebook:5,akagawa:0,rokuga:1,ad:4,norec:6,detail:'集計対象はシナリオ「突破Aiクルー」の有効購読者289名（解約済み180名は除外・同一メールの重複2組を含む）。うちfree9記録あり283名＝reading 115・note 29・line 1・x 28・direct 100・facebook 5・rokuga 1・ad 4、未記録6名。MyASP MCP実測・毎朝自動更新。'};
 /*TOPPA-ROUTES-END*/
-/*TOPPA-UPSELL-START*/const toppaUpsell={"updated":"2026/09/30","hist":[{"d":"2026/09/02","c":126,"l":4,"m":5,"o":0},{"d":"2026/09/03","c":124,"l":4,"m":4,"o":0},{"d":"2026/09/04","c":119,"l":5,"m":3,"o":0},{"d":"2026/09/05","c":115,"l":5,"m":3,"o":0},{"d":"2026/09/06","c":109,"l":5,"m":3,"o":0},{"d":"2026/09/07","c":106,"l":5,"m":3,"o":0},{"d":"2026/09/08","c":106,"l":5,"m":3,"o":0},{"d":"2026/09/09","c":101,"l":5,"m":3,"o":0},{"d":"2026/09/10","c":97,"l":5,"m":3,"o":0},{"d":"2026/09/11","c":99,"l":4,"m":3,"o":0},{"d":"2026/09/12","c":104,"l":6,"m":3,"o":0},{"d":"2026/09/13","c":123,"l":6,"m":9,"o":0},{"d":"2026/09/14","c":131,"l":6,"m":12,"o":0},{"d":"2026/09/15","c":140,"l":6,"m":12,"o":0},{"d":"2026/09/16","c":154,"l":6,"m":13,"o":0},{"d":"2026/09/17","c":190,"l":8,"m":18,"o":0},{"d":"2026/09/18","c":202,"l":8,"m":18,"o":0},{"d":"2026/09/19","c":216,"l":9,"m":18,"o":0},{"d":"2026/09/20","c":218,"l":9,"m":18,"o":0},{"d":"2026/09/21","c":219,"l":9,"m":18,"o":0},{"d":"2026/09/22","c":224,"l":9,"m":19,"o":0},{"d":"2026/09/23","c":235,"l":9,"m":19,"o":0},{"d":"2026/09/24","c":238,"l":9,"m":18,"o":0},{"d":"2026/09/25","c":250,"l":9,"m":18,"o":0},{"d":"2026/09/26","c":251,"l":9,"m":17,"o":0},{"d":"2026/09/27","c":259,"l":9,"m":16,"o":0},{"d":"2026/09/28","c":255,"l":8,"m":13,"o":0},{"d":"2026/09/30","c":246,"l":7,"m":13,"o":0}]};/*TOPPA-UPSELL-END*/
-/*DAYSNAP-START*/const daySnap={"date":"2026/10/01","cur":{"base":379,"aM":43,"aL":27,"aC":646,"aS":0,"bT":675,"bM":165,"bL":106,"bC":382,"bS":20,"sM":229,"sC":230,"sA":2722800,"tBase":466,"tM":116,"tL":64,"tC":281,"tS":5,"rM":115,"rL":60,"rC":199,"rS":5,"sRM":84,"sRL":46,"sRC":55,"sRO":44,"pT":1080,"pM":220,"pL":181,"pC":554,"pS":103},"prev":{"base":379,"aM":43,"aL":27,"aC":646,"aS":0,"bT":663,"bM":165,"bL":106,"bC":370,"bS":20,"sM":229,"sC":230,"sA":2722800,"tBase":466,"tM":116,"tL":64,"tC":281,"tS":5,"rM":115,"rL":60,"rC":199,"rS":5,"sRM":84,"sRL":46,"sRC":55,"sRO":44,"date":"2026/09/30"}};/*DAYSNAP-END*/
+/*TOPPA-UPSELL-START*/const toppaUpsell={"updated":"2026/10/01","hist":[{"d":"2026/09/02","c":126,"l":4,"m":5,"o":0},{"d":"2026/09/03","c":124,"l":4,"m":4,"o":0},{"d":"2026/09/04","c":119,"l":5,"m":3,"o":0},{"d":"2026/09/05","c":115,"l":5,"m":3,"o":0},{"d":"2026/09/06","c":109,"l":5,"m":3,"o":0},{"d":"2026/09/07","c":106,"l":5,"m":3,"o":0},{"d":"2026/09/08","c":106,"l":5,"m":3,"o":0},{"d":"2026/09/09","c":101,"l":5,"m":3,"o":0},{"d":"2026/09/10","c":97,"l":5,"m":3,"o":0},{"d":"2026/09/11","c":99,"l":4,"m":3,"o":0},{"d":"2026/09/12","c":104,"l":6,"m":3,"o":0},{"d":"2026/09/13","c":123,"l":6,"m":9,"o":0},{"d":"2026/09/14","c":131,"l":6,"m":12,"o":0},{"d":"2026/09/15","c":140,"l":6,"m":12,"o":0},{"d":"2026/09/16","c":154,"l":6,"m":13,"o":0},{"d":"2026/09/17","c":190,"l":8,"m":18,"o":0},{"d":"2026/09/18","c":202,"l":8,"m":18,"o":0},{"d":"2026/09/19","c":216,"l":9,"m":18,"o":0},{"d":"2026/09/20","c":218,"l":9,"m":18,"o":0},{"d":"2026/09/21","c":219,"l":9,"m":18,"o":0},{"d":"2026/09/22","c":224,"l":9,"m":19,"o":0},{"d":"2026/09/23","c":235,"l":9,"m":19,"o":0},{"d":"2026/09/24","c":238,"l":9,"m":18,"o":0},{"d":"2026/09/25","c":250,"l":9,"m":18,"o":0},{"d":"2026/09/26","c":251,"l":9,"m":17,"o":0},{"d":"2026/09/27","c":259,"l":9,"m":16,"o":0},{"d":"2026/09/28","c":255,"l":8,"m":13,"o":0},{"d":"2026/09/30","c":246,"l":7,"m":13,"o":0},{"d":"2026/10/01","c":244,"l":9,"m":13,"o":0}]};/*TOPPA-UPSELL-END*/
+/*DAYSNAP-START*/const daySnap={"date":"2026/10/01","cur":{"base":473,"aM":43,"aL":27,"aC":664,"aS":0,"bT":672,"bM":165,"bL":107,"bC":378,"bS":20,"sM":241,"sC":241,"sA":2752500,"tBase":474,"tM":117,"tL":66,"tC":286,"tS":5,"rM":117,"rL":65,"rC":286,"rS":5,"sRM":84,"sRL":45,"sRC":55,"sRO":57,"pT":1081,"pM":220,"pL":182,"pC":554,"pS":103},"prev":{"base":379,"aM":43,"aL":27,"aC":646,"aS":0,"bT":663,"bM":165,"bL":106,"bC":370,"bS":20,"sM":229,"sC":230,"sA":2722800,"tBase":466,"tM":116,"tL":64,"tC":281,"tS":5,"rM":115,"rL":60,"rC":199,"rS":5,"sRM":84,"sRL":46,"sRC":55,"sRO":44,"date":"2026/09/30"}};/*DAYSNAP-END*/
 /*DBMASTER-START*/
-const dbmaster={updated:'2026/10/01',total:675,ranks:{mentor:165,leader:106,crew:382,sup:20,member:2},up:[{t:'リーダー→メンター',n:40},{t:'クルー→メンター',n:9},{t:'クルー→リーダー',n:8}],upTotal:57,down:[{t:'メンター→リーダー',n:14},{t:'リーダー→クルー',n:13},{t:'メンター→クルー',n:9}],downTotal:36,all:{total:1080,withdrawn:405,mentor:220,leader:181,crew:554,sup:103,member:22}};
+const dbmaster={updated:'2026/10/01',total:672,ranks:{mentor:165,leader:107,crew:378,sup:20,member:2},up:[{t:'リーダー→メンター',n:40},{t:'クルー→メンター',n:9},{t:'クルー→リーダー',n:8}],upTotal:57,down:[{t:'メンター→リーダー',n:14},{t:'リーダー→クルー',n:13},{t:'メンター→クルー',n:9}],downTotal:36,all:{total:1081,withdrawn:409,mentor:220,leader:182,crew:554,sup:103,member:22}};
 /*DBMASTER-END*/
-/*GAPLIST-START*/const gapList=[{n:'阿部Y',e:'***@gmail.com',q:'メンター'},{n:'三橋由',e:'***@gmail.com',q:'メンター'},{n:'加藤寛',e:'***@gmail.com',q:'メンター'},{n:'丹羽Y',e:'***@gmail.com',q:'メンター'},{n:'小山真',e:'***@gmail.com',q:'メンター'},{n:'曽谷由',e:'***@gmail.com',q:'メンター'},{n:'水越ひ',e:'***@gmail.com',q:'メンター'},{n:'三好M',e:'***@gmail.com',q:'メンター'},{n:'川﨑N',e:'***@gmail.com',q:'メンター'},{n:'橋本房',e:'***@gmail.com',q:'メンター'},{n:'久木田知',e:'***@gmail.com',q:'メンター'},{n:'桃井拓',e:'***@gmail.com',q:'メンター'},{n:'鳥居N',e:'***@yahoo.co.jp',q:'メンター'},{n:'田村敏',e:'***@gmail.com',q:'メンター'},{n:'外山裕',e:'***@gmail.com',q:'メンター'},{n:'早川裕',e:'***@gmail.com',q:'リーダー'},{n:'植田由',e:'***@yahoo.co.jp',q:'リーダー'},{n:'石黒義',e:'***@gmail.com',q:'クルー'},{n:'倉内麻',e:'***@gmail.com',q:'クルー'},{n:'猿山邦',e:'***@gmail.com',q:'クルー'},{n:'中村明',e:'***@gmail.com',q:'クルー'},{n:'安藤妙',e:'***@gmail.com',q:'クルー'},{n:'浅川好',e:'***@gmail.com',q:'クルー'},{n:'松本康',e:'***@gmail.com',q:'クルー'},{n:'川本隆',e:'***@gmail.com',q:'クルー'},{n:'笹川ま',e:'***@gmail.com',q:'クルー'},{n:'西村長',e:'***@gmail.com',q:'クルー'},{n:'森道',e:'***@i.softbank.jp',q:'クルー'},{n:'甲斐雄',e:'***@yahoo.co.jp',q:'クルー'},{n:'弥栄さ',e:'***@gmail.com',q:'クルー'},{n:'弥栄さ',e:'***@gmail.com',q:'クルー'},{n:'上土井貴',e:'***@gmail.com',q:'クルー'},{n:'錫村ひ',e:'***@yahoo.co.jp',q:'クルー'},{n:'福田博',e:'***@gmail.com',q:'クルー'},{n:'福田晃',e:'***@gmail.com',q:'クルー'},{n:'山崎浩',e:'***@gmail.com',q:'クルー'},{n:'廣川益',e:'***@gmail.com',q:'クルー'},{n:'廣田克',e:'***@gmail.com',q:'クルー'},{n:'森川和',e:'***@softbank.ne.jp',q:'クルー'},{n:'池田晶',e:'***@gmail.com',q:'クルー'},{n:'木村卓',e:'***@inolabo.org',q:'クルー'},{n:'波留正',e:'***@gmail.com',q:'クルー'},{n:'河合牧',e:'***@gmail.com',q:'クルー'},{n:'鈴木譲',e:'***@gmail.com',q:'クルー'},{n:'猪狩久',e:'***@docomo.ne.jp',q:'クルー'},{n:'勘田敦',e:'***@gmail.com',q:'クルー'},{n:'加藤啓',e:'***@gmail.com',q:'クルー'},{n:'大野可',e:'***@gmail.com',q:'クルー'},{n:'小島旭',e:'***@gmail.com',q:'クルー'},{n:'横沼ケ',e:'***@gmail.com',q:'クルー'},{n:'松浦健',e:'***@gmail.com',q:'クルー'},{n:'飯島伸',e:'***@gmail.com',q:'クルー'},{n:'芥子晃',e:'***@yahoo.co.jp',q:'クルー'},{n:'長沼浩',e:'***@gmail.com',q:'クルー'},{n:'ムート延',e:'***@mac.com',q:'クルー'},{n:'澤田龍',e:'***@gmail.com',q:'クルー'},{n:'小原諒',e:'***@gmail.com',q:'クルー'},{n:'川本友',e:'***@gmail.com',q:'クルー'},{n:'松崎光',e:'***@gmail.com',q:'クルー'},{n:'真柴良',e:'***@gmail.com',q:'クルー'},{n:'嶋本真',e:'***@gmail.com',q:'クルー'},{n:'上田美',e:'***@gmail.com',q:'クルー'},{n:'高篠美',e:'***@gmail.com',q:'クルー'},{n:'森将',e:'***@gmail.com',q:'クルー'},{n:'塩入守',e:'***@yahoo.co.jp',q:'クルー'},{n:'仁藤智',e:'***@iijapan.net',q:'クルー'},{n:'櫻井千',e:'***@yahoo.co.jp',q:'クルー'},{n:'鬼頭侑',e:'***@gmail.com',q:'クルー'},{n:'ARAKAWA O',e:'***@gmail.com',q:'クルー'},{n:'相田晃',e:'***@gmail.com',q:'クルー'},{n:'岡村寿',e:'***@yahoo.co.jp',q:'クルー'},{n:'長崎良',e:'***@gmail.com',q:'クルー'},{n:'福村香',e:'***@gmail.com',q:'クルー'},{n:'織部郁',e:'***@gmail.com',q:'クルー'},{n:'梶原佑',e:'***@gmail.com',q:'クルー'},{n:'KOBAYASHI I',e:'***@yahoo.co.jp',q:'クルー'},{n:'西原る',e:'***@gmail.com',q:'クルー'},{n:'瀬口眞',e:'***@gmail.com',q:'クルー'},{n:'ARIJI H',e:'***@gmail.com',q:'クルー'},{n:'植田大',e:'***@gmail.com',q:'クルー'},{n:'冬野真',e:'***@gmail.com',q:'クルー'},{n:'伊藤俊',e:'***@gmail.com',q:'クルー'},{n:'星野卓',e:'***@gmail.com',q:'クルー'},{n:'寺田一',e:'***@gmail.com',q:'クルー'},{n:'本多真',e:'***@gmail.com',q:'クルー'},{n:'高橋佳',e:'***@gmail.com',q:'クルー'},{n:'田坂京',e:'***@asaito-village.com',q:'クルー'},{n:'高橋貴',e:'***@gmail.com',q:'クルー'},{n:'クマダジ',e:'***@yahoo.co.jp',q:'クルー'},{n:'橋本沙',e:'***@gmail.com',q:'クルー'},{n:'関谷拓',e:'***@gmail.com',q:'クルー'},{n:'鈴木友',e:'***@gmail.com',q:'クルー'},{n:'小浜道',e:'***@gmail.com',q:'クルー'},{n:'阿藤庸',e:'***@gmail.com',q:'クルー'},{n:'上野ま',e:'***@gmail.com',q:'クルー'},{n:'須賀涼',e:'***@gmail.com',q:'クルー'},{n:'林み',e:'***@nifty.com',q:'クルー'},{n:'SUDO R',e:'***@gmail.com',q:'クルー'},{n:'藤井康',e:'***@ybb.ne.jp',q:'クルー'},{n:'山口浩',e:'***@gmail.com',q:'クルー'},{n:'野上欣',e:'***@cap.ocn.ne.jp',q:'クルー'},{n:'後藤佳',e:'***@gmail.com',q:'クルー'},{n:'藤巻米',e:'***@gmail.com',q:'クルー'},{n:'嶋津義',e:'***@gmail.com',q:'クルー'},{n:'澁川泰',e:'***@gmail.com',q:'クルー'},{n:'冨永勇',e:'***@gmail.com',q:'クルー'},{n:'大空夢',e:'***@gmail.com',q:'クルー'},{n:'福田裕',e:'***@gmail.com',q:'クルー'},{n:'藤本貴',e:'***@gmail.com',q:'クルー'}];/*GAPLIST-END*/
-/*MEMBERSTRIPE-START*/const memberStripe={"updated": "2026/10/01", "window": 31, "member": {"mentor": 88, "leader": 44, "crew": 45, "sup": 5, "total": 182}, "paid": {"mentor": 64, "leader": 30, "crew": 41, "sup": 0, "total": 135}, "annual": {"mentor": 24, "leader": 14, "crew": 4, "sup": 5, "total": 47}, "people": 173, "uncollected": {"mentor": 4, "leader": 0, "crew": 0, "sup": 0, "total": 4}, "prospect": {"mentor": 13, "leader": 6, "crew": 241, "sup": 0, "total": 260}, "pending": {"mentor": 0, "leader": 0, "crew": 2, "sup": 0, "total": 2}, "related": {"mentor": 15, "leader": 14, "crew": 1, "sup": 0, "total": 30}, "grant": {"mentor": 14, "leader": 14, "crew": 1, "sup": 0, "total": 29}, "check": {"mentor": 1, "leader": 0, "crew": 0, "sup": 0, "total": 1}, "excluded": {"mentor": 1, "leader": 1, "crew": 3, "sup": 0, "total": 5}, "db": {"mentor": 117, "leader": 65, "crew": 290, "sup": 5, "total": 477}};/*MEMBERSTRIPE-END*/
-/*MASTERDB-START*/const masterdb={updated:'2026/09/30',ym:'2026-08',base:379,prevBase:250,newTotal:176,quitTotal:47,ranks:{mentor:115,leader:60,crew:199,sup:5},quit:{mentor:11,leader:11,crew:17,sup:8},today:{date:'2026/09/30',base:466,ranks:{mentor:116,leader:64,crew:281,sup:5}}};/*MASTERDB-END*/
-/*MYASP-START*/const myaspList={total:719,mentor:43,leader:27,crew:646,sup:0};/*MYASP-END*/
+/*GAPLIST-START*/const gapList=[];/*GAPLIST-END*/
+/*MEMBERSTRIPE-START*/const memberStripe={"updated": "2026/10/01", "window": 31, "member": {"mentor": 88, "leader": 44, "crew": 48, "sup": 5, "total": 185}, "paid": {"mentor": 64, "leader": 30, "crew": 44, "sup": 0, "total": 138}, "annual": {"mentor": 24, "leader": 14, "crew": 4, "sup": 5, "total": 47}, "people": 176, "uncollected": {"mentor": 4, "leader": 0, "crew": 0, "sup": 0, "total": 4}, "prospect": {"mentor": 13, "leader": 7, "crew": 235, "sup": 0, "total": 255}, "pending": {"mentor": 0, "leader": 0, "crew": 1, "sup": 0, "total": 1}, "related": {"mentor": 15, "leader": 14, "crew": 1, "sup": 0, "total": 30}, "grant": {"mentor": 14, "leader": 14, "crew": 1, "sup": 0, "total": 29}, "check": {"mentor": 1, "leader": 0, "crew": 0, "sup": 0, "total": 1}, "excluded": {"mentor": 1, "leader": 1, "crew": 2, "sup": 0, "total": 4}, "db": {"mentor": 117, "leader": 66, "crew": 286, "sup": 5, "total": 474}};/*MEMBERSTRIPE-END*/
+/*MASTERDB-START*/const masterdb={updated:'2026/10/01',ym:'2026-09',base:473,prevBase:341,newTotal:205,quitTotal:73,ranks:{mentor:117,leader:65,crew:286,sup:5},quit:{mentor:15,leader:2,crew:56,sup:0},today:{date:'2026/10/01',base:474,ranks:{mentor:117,leader:66,crew:286,sup:5}}};/*MASTERDB-END*/
+/*MYASP-START*/const myaspList={total:737,mentor:43,leader:27,crew:664,sup:0};/*MYASP-END*/
 /* Sheet2: 顧客DBマスター（購入者・資格有効期限ベース）②月次増減表と同期・範囲はltMonths参照（masterdb-pipeline.pyが日次更新） */
-const ltMonths=['2024-06','2024-07','2024-08','2024-09','2024-10','2024-11','2024-12','2025-01','2025-02','2025-03','2025-04','2025-05','2025-06','2025-07','2025-08','2025-09','2025-10','2025-11','2025-12','2026-01','2026-02','2026-03','2026-04','2026-05','2026-06','2026-07','2026-08'];
-const ltTotal=[168,168,276,276,276,276,276,473,473,473,473,474,449,449,384,384,400,444,481,330,347,349,358,408,264,250,379];
-const ltNew=[165,0,108,0,0,0,0,197,0,0,0,1,113,0,19,0,16,44,37,5,17,2,9,50,24,31,176];
-const ltLeave=[0,0,0,0,0,0,0,0,0,0,0,0,138,0,84,0,0,0,0,156,0,0,0,0,168,45,47];
-const ltPrev=[3,168,168,276,276,276,276,276,473,473,473,473,474,449,449,384,384,400,444,481,330,347,349,358,408,264,250];
-const ltMentor=[32,32,62,62,62,62,62,85,85,85,85,86,84,84,68,68,68,107,138,128,144,145,148,161,127,121,115];
-const ltLeader=[24,24,66,66,66,66,66,156,156,156,156,156,160,160,134,134,150,151,154,89,89,89,94,106,74,67,60];
-const ltCrew=[1,1,1,1,1,1,1,48,48,48,48,48,121,121,126,126,126,129,129,87,88,89,90,115,50,49,199];
-const ltSup=[58,58,88,88,88,88,88,125,125,125,125,125,78,78,56,56,56,57,60,26,26,26,26,26,13,13,5];
+const ltMonths=['2024-06','2024-07','2024-08','2024-09','2024-10','2024-11','2024-12','2025-01','2025-02','2025-03','2025-04','2025-05','2025-06','2025-07','2025-08','2025-09','2025-10','2025-11','2025-12','2026-01','2026-02','2026-03','2026-04','2026-05','2026-06','2026-07','2026-08','2026-09'];
+const ltTotal=[168,168,276,276,276,276,276,473,473,473,473,474,449,449,384,384,400,444,481,330,347,349,358,408,265,247,341,473];
+const ltNew=[165,0,108,0,0,0,0,197,0,0,0,1,113,0,19,0,16,44,37,5,17,2,9,50,25,27,146,205];
+const ltLeave=[0,0,0,0,0,0,0,0,0,0,0,0,138,0,84,0,0,0,0,156,0,0,0,0,168,45,52,73];
+const ltPrev=[3,168,168,276,276,276,276,276,473,473,473,473,474,449,449,384,384,400,444,481,330,347,349,358,408,265,247,341];
+const ltMentor=[32,32,62,62,62,62,62,85,85,85,85,86,84,84,68,68,68,107,138,128,144,145,148,161,127,121,115,117];
+const ltLeader=[24,24,66,66,66,66,66,156,156,156,156,156,160,160,134,134,150,151,154,89,89,89,94,106,74,67,60,65];
+const ltCrew=[1,1,1,1,1,1,1,48,48,48,48,48,121,121,126,126,126,129,129,87,88,89,90,115,51,46,161,286];
+const ltSup=[58,58,88,88,88,88,88,125,125,125,125,125,78,78,56,56,56,57,60,26,26,26,26,26,13,13,5,5];
 
 const log=[
   ['2026/09/01','入会','クルー','白石邦','***@gmail.com','購読中'],
@@ -1604,21 +1615,29 @@ const log=[
   ['2026/09/28','入会','クルー','山内篤','***@pc-advance.net','購読中'],
   ['2026/09/28','入会','クルー','佐藤麻','***@gmail.com','購読中'],
   ['2026/09/29','入会','クルー','中林秀','***@lucky.tank.jp','購読中'],
-  ['2026/09/29','退会','メンター','森A','***@gmail.com','解除済み'],
-  ['2026/09/29','退会','メンター','阿部Y','***@gmail.com','解除済み'],
-  ['2026/09/29','退会','メンター','鳥居N','***@yahoo.co.jp','解除済み'],
-  ['2026/09/29','退会','メンター','丹羽Y','***@gmail.com','解除済み'],
-  ['2026/09/29','退会','メンター','川﨑N','***@gmail.com','解除済み'],
-  ['2026/09/29','退会','メンター','三好M','***@gmail.com','解除済み'],
   ['2026/09/29','入会','クルー','平井靖','***@gmail.com','購読中'],
   ['2026/09/29','入会','クルー','田島大','***@gmail.com','購読中'],
   ['2026/09/29','入会','クルー','松田悦','***@gmail.com','購読中'],
   ['2026/09/29','入会','クルー','齊藤三','***@gmail.com','購読中'],
   ['2026/09/29','入会','クルー','阿部和','***@gmail.com','購読中'],
+  ['2026/09/30','入会','クルー','鈴木伸','***@gmail.com','購読中'],
+  ['2026/09/30','入会','クルー','河本雅','***@yahoo.co.jp','購読中'],
+  ['2026/09/30','退会','メンター','森A','***@gmail.com','解除済み'],
+  ['2026/09/30','退会','メンター','阿部Y','***@gmail.com','解除済み'],
+  ['2026/09/30','退会','メンター','鳥居N','***@yahoo.co.jp','解除済み'],
+  ['2026/09/30','退会','メンター','丹羽Y','***@gmail.com','解除済み'],
+  ['2026/09/30','退会','メンター','川﨑N','***@gmail.com','解除済み'],
+  ['2026/09/30','退会','メンター','三好M','***@gmail.com','解除済み'],
+  ['2026/09/30','入会','クルー','金子京','***@gmail.com','購読中'],
+  ['2026/09/30','入会','クルー','宮田恵','***@gmail.com','購読中'],
+  ['2026/09/30','入会','クルー','大島朋','***@gmail.com','購読中'],
+  ['2026/09/30','入会','クルー','中村美','***@gmail.com','購読中'],
 ];
 
 /*SVCUNPAID-START*/
 const svcUnpaid=[
+  {d:'2026/09/30 00:24',t:'未完了',s:"新規　GPTs付_月会員初月無料　資格（クルー）",a:3300,e:'***@gmail.com',r:"残高不足",ok:''},
+  {d:'2026/09/30 00:24',t:'カード失敗',s:"新規　GPTs付_月会員初月無料　資格（クルー）",a:3300,e:'***@gmail.com',r:"残高不足",ok:''},
   {d:'2026/09/29 14:00',t:'未完了',s:"20261003-04‗フューチャーマッピング・マスター講座",a:165000,e:'***@gmail.com',r:"入力未完了",ok:'あり'},
   {d:'2026/09/29 06:00',t:'未完了',s:"Invoice 50FO7D95-0002",a:3300,e:'***@mac.com',r:"残高不足",ok:''},
   {d:'2026/09/29 06:00',t:'カード失敗',s:"Invoice 50FO7D95-0002",a:3300,e:'***@mac.com',r:"残高不足",ok:''},
@@ -2361,31 +2380,35 @@ if(typeof toppaUpsell!=='undefined'&&toppaUpsell.hist&&toppaUpsell.hist.length){
 
 <script>
 /* Stripe決済版：会員数・月次推移のレンダリング */
-(function(){const s={"updated": "2026/10/01", "window": 31, "today": {"total": 268, "ranks": {"mentor": 106, "leader": 60, "crew": 97, "sup": 5, "other": 0}, "monthly": 225, "annual": 43, "trial": 270, "trialR": {"d14": {"mentor": 3, "leader": 3, "crew": 111, "sup": 0, "other": 0, "total": 117}, "d30": {"mentor": 10, "leader": 5, "crew": 138, "sup": 0, "other": 0, "total": 153}}, "cancelR": {"c14": {"mentor": 10, "leader": 3, "crew": 108, "sup": 0, "other": 0, "total": 121, "subs": 121}, "c30": {"mentor": 1, "leader": 2, "crew": 34, "sup": 0, "other": 0, "total": 37, "subs": 37}, "cpaid": {"mentor": 0, "leader": 0, "crew": 2, "sup": 0, "other": 0, "total": 2, "subs": 2}}}, "months": [{"ym": "2026/01", "active": 111, "activeR": {"mentor": 79, "leader": 21, "crew": 7, "sup": 4, "other": 0}, "new": 10, "newR": {"mentor": 7, "leader": 3, "crew": 0, "sup": 0, "other": 0}, "back": 0, "left": 1, "leftR": {"mentor": 1, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 9, "sales": 1481700, "salesR": {"mentor": 1135200, "leader": 336600, "crew": 9900, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/02", "active": 117, "activeR": {"mentor": 80, "leader": 25, "crew": 8, "sup": 4, "other": 0}, "new": 7, "newR": {"mentor": 2, "leader": 4, "crew": 1, "sup": 0, "other": 0}, "back": 0, "left": 1, "leftR": {"mentor": 1, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 6, "sales": 1970100, "salesR": {"mentor": 1564200, "leader": 356400, "crew": 49500, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/03", "active": 120, "activeR": {"mentor": 81, "leader": 25, "crew": 10, "sup": 4, "other": 0}, "new": 3, "newR": {"mentor": 1, "leader": 0, "crew": 2, "sup": 0, "other": 0}, "back": 0, "left": 0, "leftR": {"mentor": 0, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 3, "sales": 1293600, "salesR": {"mentor": 1122000, "leader": 118800, "crew": 52800, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/04", "active": 125, "activeR": {"mentor": 80, "leader": 30, "crew": 11, "sup": 4, "other": 0}, "new": 9, "newR": {"mentor": 2, "leader": 6, "crew": 1, "sup": 0, "other": 0}, "back": 0, "left": 4, "leftR": {"mentor": 3, "leader": 1, "crew": 0, "sup": 0, "other": 0}, "net": 5, "sales": 1432200, "salesR": {"mentor": 1102200, "leader": 283800, "crew": 46200, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/05", "active": 144, "activeR": {"mentor": 86, "leader": 35, "crew": 18, "sup": 5, "other": 0}, "new": 21, "newR": {"mentor": 8, "leader": 5, "crew": 7, "sup": 1, "other": 0}, "back": 2, "left": 4, "leftR": {"mentor": 3, "leader": 1, "crew": 0, "sup": 0, "other": 0}, "net": 19, "sales": 1651320, "salesR": {"mentor": 1320000, "leader": 283800, "crew": 39600, "sup": 7920, "other": 0}, "partial": false}, {"ym": "2026/06", "active": 176, "activeR": {"mentor": 87, "leader": 44, "crew": 40, "sup": 5, "other": 0}, "new": 36, "newR": {"mentor": 6, "leader": 8, "crew": 22, "sup": 0, "other": 0}, "back": 0, "left": 4, "leftR": {"mentor": 4, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 32, "sales": 1762200, "salesR": {"mentor": 1273800, "leader": 376200, "crew": 112200, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/07", "active": 230, "activeR": {"mentor": 102, "leader": 56, "crew": 67, "sup": 5, "other": 0}, "new": 61, "newR": {"mentor": 17, "leader": 12, "crew": 32, "sup": 0, "other": 0}, "back": 2, "left": 9, "leftR": {"mentor": 3, "leader": 1, "crew": 5, "sup": 0, "other": 0}, "net": 54, "sales": 2171400, "salesR": {"mentor": 1544400, "leader": 425700, "crew": 201300, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/08", "active": 249, "activeR": {"mentor": 107, "leader": 59, "crew": 78, "sup": 5, "other": 0}, "new": 24, "newR": {"mentor": 8, "leader": 4, "crew": 12, "sup": 0, "other": 0}, "back": 1, "left": 6, "leftR": {"mentor": 3, "leader": 1, "crew": 2, "sup": 0, "other": 0}, "net": 19, "sales": 2478300, "salesR": {"mentor": 1716000, "leader": 488400, "crew": 273900, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/09", "active": 271, "activeR": {"mentor": 111, "leader": 60, "crew": 95, "sup": 5, "other": 0}, "new": 34, "newR": {"mentor": 6, "leader": 3, "crew": 25, "sup": 0, "other": 0}, "back": 2, "left": 14, "leftR": {"mentor": 4, "leader": 0, "crew": 10, "sup": 0, "other": 0}, "net": 22, "sales": 2603700, "salesR": {"mentor": 1808400, "leader": 498300, "crew": 297000, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/10", "active": 46, "activeR": {"mentor": 20, "leader": 14, "crew": 7, "sup": 5, "other": 0}, "new": 1, "newR": {"mentor": 0, "leader": 0, "crew": 1, "sup": 0, "other": 0}, "back": 1, "left": 227, "leftR": {"mentor": 91, "leader": 46, "crew": 90, "sup": 0, "other": 0}, "net": -225, "sales": 16500, "salesR": {"mentor": 0, "leader": 9900, "crew": 6600, "sup": 0, "other": 0}, "partial": true}], "feeCount": 1289};if(!s)return;const $$=id=>document.getElementById(id);
+(function(){const s={"updated": "2026/10/01", "grace": 5, "today": {"total": 282, "ranks": {"mentor": 111, "leader": 61, "crew": 105, "sup": 5, "other": 0}, "monthly": 233, "annual": 49, "expiring": {"2026/10": 6, "2026/11": 9}, "trial": 259, "trialAlsoMember": 2, "trialR": {"d14": {"mentor": 3, "leader": 4, "crew": 101, "sup": 0, "other": 0, "total": 108}, "d30": {"mentor": 10, "leader": 5, "crew": 137, "sup": 0, "other": 0, "total": 151}}, "cancel": 156, "cancelNowTrial": 7, "cancelNowMember": 5, "cancelR": {"c14": {"mentor": 10, "leader": 3, "crew": 102, "sup": 0, "other": 0, "total": 115}, "c30": {"mentor": 1, "leader": 2, "crew": 36, "sup": 0, "other": 0, "total": 39}, "cpaid": {"mentor": 0, "leader": 0, "crew": 2, "sup": 0, "other": 0, "total": 2}}}, "months": [{"ym": "2026/01", "active": 112, "activeR": {"mentor": 80, "leader": 21, "crew": 7, "sup": 4, "other": 0}, "new": 10, "newR": {"mentor": 7, "leader": 3, "crew": 0, "sup": 0, "other": 0}, "back": 0, "left": 0, "leftR": {"mentor": 0, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 10, "sales": 1481700, "salesR": {"mentor": 1135200, "leader": 336600, "crew": 9900, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/02", "active": 117, "activeR": {"mentor": 80, "leader": 25, "crew": 8, "sup": 4, "other": 0}, "new": 7, "newR": {"mentor": 2, "leader": 4, "crew": 1, "sup": 0, "other": 0}, "back": 0, "left": 2, "leftR": {"mentor": 2, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 5, "sales": 1970100, "salesR": {"mentor": 1564200, "leader": 356400, "crew": 49500, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/03", "active": 120, "activeR": {"mentor": 81, "leader": 25, "crew": 10, "sup": 4, "other": 0}, "new": 3, "newR": {"mentor": 1, "leader": 0, "crew": 2, "sup": 0, "other": 0}, "back": 0, "left": 0, "leftR": {"mentor": 0, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 3, "sales": 1293600, "salesR": {"mentor": 1122000, "leader": 118800, "crew": 52800, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/04", "active": 126, "activeR": {"mentor": 81, "leader": 30, "crew": 11, "sup": 4, "other": 0}, "new": 9, "newR": {"mentor": 2, "leader": 6, "crew": 1, "sup": 0, "other": 0}, "back": 0, "left": 3, "leftR": {"mentor": 2, "leader": 1, "crew": 0, "sup": 0, "other": 0}, "net": 6, "sales": 1432200, "salesR": {"mentor": 1102200, "leader": 283800, "crew": 46200, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/05", "active": 145, "activeR": {"mentor": 86, "leader": 36, "crew": 18, "sup": 5, "other": 0}, "new": 21, "newR": {"mentor": 8, "leader": 5, "crew": 7, "sup": 1, "other": 0}, "back": 1, "left": 3, "leftR": {"mentor": 3, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 19, "sales": 1651320, "salesR": {"mentor": 1320000, "leader": 283800, "crew": 39600, "sup": 7920, "other": 0}, "partial": false}, {"ym": "2026/06", "active": 178, "activeR": {"mentor": 89, "leader": 44, "crew": 40, "sup": 5, "other": 0}, "new": 36, "newR": {"mentor": 6, "leader": 8, "crew": 22, "sup": 0, "other": 0}, "back": 0, "left": 3, "leftR": {"mentor": 2, "leader": 1, "crew": 0, "sup": 0, "other": 0}, "net": 33, "sales": 1762200, "salesR": {"mentor": 1273800, "leader": 376200, "crew": 112200, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/07", "active": 232, "activeR": {"mentor": 102, "leader": 56, "crew": 69, "sup": 5, "other": 0}, "new": 61, "newR": {"mentor": 17, "leader": 12, "crew": 32, "sup": 0, "other": 0}, "back": 1, "left": 8, "leftR": {"mentor": 4, "leader": 1, "crew": 3, "sup": 0, "other": 0}, "net": 54, "sales": 2171400, "salesR": {"mentor": 1544400, "leader": 425700, "crew": 201300, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/08", "active": 252, "activeR": {"mentor": 109, "leader": 59, "crew": 79, "sup": 5, "other": 0}, "new": 24, "newR": {"mentor": 8, "leader": 4, "crew": 12, "sup": 0, "other": 0}, "back": 1, "left": 5, "leftR": {"mentor": 1, "leader": 1, "crew": 3, "sup": 0, "other": 0}, "net": 20, "sales": 2478300, "salesR": {"mentor": 1716000, "leader": 488400, "crew": 273900, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/09", "active": 279, "activeR": {"mentor": 112, "leader": 61, "crew": 101, "sup": 5, "other": 0}, "new": 34, "newR": {"mentor": 6, "leader": 3, "crew": 25, "sup": 0, "other": 0}, "back": 1, "left": 8, "leftR": {"mentor": 4, "leader": 0, "crew": 4, "sup": 0, "other": 0}, "net": 27, "sales": 2603700, "salesR": {"mentor": 1808400, "leader": 498300, "crew": 297000, "sup": 0, "other": 0}, "partial": false}, {"ym": "2026/10", "active": 282, "activeR": {"mentor": 111, "leader": 61, "crew": 105, "sup": 5, "other": 0}, "new": 4, "newR": {"mentor": 0, "leader": 0, "crew": 4, "sup": 0, "other": 0}, "back": 0, "left": 1, "leftR": {"mentor": 1, "leader": 0, "crew": 0, "sup": 0, "other": 0}, "net": 3, "sales": 29700, "salesR": {"mentor": 0, "leader": 9900, "crew": 19800, "sup": 0, "other": 0}, "partial": true}], "feeCount": 1293, "offlist": {"n": 30, "amt": 1161600}};if(!s)return;const $$=id=>document.getElementById(id);
  const set=(id,v)=>{const e=$$(id);if(e)e.innerHTML=v;};const yen=n=>'¥'+Number(n).toLocaleString();
  const t=s.today,r=t.ranks;set('sm-upd',s.updated);set('smr-upd',s.updated);
- set('sm-total',t.total);set('sm-total-foot',`月払い${t.monthly}・年払い${t.annual}${r.other?`（資格不明${r.other}を含む）`:''}`);
+ document.querySelectorAll('header .mono, header [id*=upd], header b').forEach(e=>{if(/^20\d\d\/\d\d\/\d\d$/.test(e.textContent.trim()))e.textContent=s.updated;});
+ const exp=Object.entries(t.expiring||{}).map(([k,v])=>`${k.replace(/^\d+\//,'').replace(/^0/,'')}月中に${v}名`).join('・');
+ set('sm-total',t.total);set('sm-total-foot',`月払い${t.monthly}名・年払い${t.annual}名${r.other?`（資格不明${r.other}名を含む）`:''}${exp?`<br>年払いの満了予定：${exp}`:''}`);
  [['m','mentor'],['l','leader'],['c','crew'],['s','sup']].forEach(([k,q])=>{set('sm-'+k,r[q]);set('sm-'+k+'-foot',t.total?`構成比 ${(r[q]/t.total*100).toFixed(1)}%`:'');});
- set('sm-trial',t.trial);
- if(t.trialR){const a=t.trialR.d14,b=t.trialR.d30,tb2=document.querySelector('#tbl-strial tbody');
-  const row=(lab,o,st)=>`<tr${st||''}><td class="l">${lab}</td><td class="mono"><b>${o.total}</b></td><td class="mono">${o.mentor}</td><td class="mono">${o.leader}</td><td class="mono">${o.crew}</td><td class="mono">${o.sup}</td></tr>`;
-  const sum={total:a.total+b.total,mentor:a.mentor+b.mentor,leader:a.leader+b.leader,crew:a.crew+b.crew,sup:a.sup+b.sup};
-  if(tb2)tb2.innerHTML=row('14日間の体験中（1〜14日目）',a)+row('<b>30日間の無料期間中（15〜44日目）</b>',b,' style="background:#eef6f3"')+row('計（見込み）',sum,' style="font-weight:700"');}
- if(t.cancelR){const c=t.cancelR,tb3=document.querySelector('#tbl-scancel tbody');
-  const row=(lab,o)=>`<tr><td class="l">${lab}</td><td class="mono"><b>${o.total}</b></td><td class="mono">${o.mentor}</td><td class="mono">${o.leader}</td><td class="mono">${o.crew}</td><td class="mono">${o.sup}</td><td class="mono">${o.subs}</td></tr>`;
-  if(tb3)tb3.innerHTML=row('14日間の体験中に解除（1〜14日目）',c.c14)+row('30日間の無料期間中に解除（15〜44日目）',c.c30)+row('課金が始まってから解約',c.cpaid);}
+ set('sm-trial',t.trial);set('sm-trial-foot','Stripeのサブスクで無料期間中の方。課金が始まると会員数に入ります');
+ const a=t.trialR.d14,b=t.trialR.d30,row=(lab,o,st)=>`<tr${st||''}><td class="l">${lab}</td><td class="mono"><b>${o.total}</b></td><td class="mono">${o.mentor}</td><td class="mono">${o.leader}</td><td class="mono">${o.crew}</td><td class="mono">${o.sup}</td></tr>`;
+ const add=(x,y)=>({total:x.total+y.total,mentor:x.mentor+y.mentor,leader:x.leader+y.leader,crew:x.crew+y.crew,sup:x.sup+y.sup});
+ const tb2=document.querySelector('#tbl-strial tbody');
+ if(tb2)tb2.innerHTML=row('14日間の体験中（1〜14日目）',a)+row('<b>30日間の初月無料の期間中（15〜44日目）</b>',b,' style="background:#eef6f3"')+row('計（見込み）',add(a,b),' style="font-weight:700"');
+ set('sm-trial-note',`14日目と15日目の境目は、無料期間の開始日からの日数で区切っています。2つの資格で登録のある方は、資格別では両方に、計では1名として数えています。${t.trialAlsoMember?`見込み${t.trial}名のうち${t.trialAlsoMember}名は、上の会員数にも入っています。`:''}「突破AI」タブの無料期間中の人数は、Stripeの顧客ID単位で数えているため、メールアドレス単位のこの表より数名多くなります（同じ方が別の顧客IDで登録している分です）。`);
+ const c=t.cancelR,tb3=document.querySelector('#tbl-scancel tbody');
+ if(tb3)tb3.innerHTML=row('14日間の体験中に解除（1〜14日目）',c.c14)+row('30日間の初月無料の期間中に解除（15〜44日目）',c.c30)+row('課金が始まってから解除',c.cpaid)+row('計',add(add(c.c14,c.c30),c.cpaid),' style="font-weight:700"');
+ set('sm-cancel-note',`解除した${t.cancel}名のうち、${t.cancelNowTrial}名は現在も無料期間中の方に、${t.cancelNowMember}名は現在の会員数に入っています。「突破AI」タブの「解約」は、クルーのサブスクの件数で数えているため、全資格を人で数えたこの表とは数が違います。`);
  const done=s.months.filter(x=>!x.partial),lm=done[done.length-1];
- if(lm){const lab=lm.ym.replace('/','年').replace(/^(\d+)年0?/,'$1年')+'月';
+ if(lm){const p=lm.ym.split('/'),lab=`${p[0]}年${+p[1]}月`;
   set('sm-lm-label',lab+'の新規');set('sm-lm-label2',lab+'の離脱');set('sm-lm-label3',lab+'の会費売上');
-  set('sm-new',lm.new);set('sm-new-foot',`メンター${lm.newR.mentor}・リーダー${lm.newR.leader}・クルー${lm.newR.crew}・サポーター${lm.newR.sup}／復帰${lm.back}`);
-  set('sm-left',lm.left);set('sm-left-foot',`メンター${lm.leftR.mentor}・リーダー${lm.leftR.leader}・クルー${lm.leftR.crew}・サポーター${lm.leftR.sup}／純増減${lm.net>0?'+':''}${lm.net}`);
-  set('sm-sales',yen(lm.sales));set('sm-sales-foot',`在籍${lm.active}名`);}
+  set('sm-new',lm.new);set('sm-new-foot',`メンター${lm.newR.mentor}・リーダー${lm.newR.leader}・クルー${lm.newR.crew}・サポーター${lm.newR.sup}／ほかに復帰${lm.back}名`);
+  set('sm-left',lm.left);set('sm-left-foot',`メンター${lm.leftR.mentor}・リーダー${lm.leftR.leader}・クルー${lm.leftR.crew}・サポーター${lm.leftR.sup}／純増減${lm.net>0?'+':(lm.net<0?'▲':'±')}${Math.abs(lm.net)}名`);
+  set('sm-sales',yen(lm.sales));set('sm-sales-foot',`月末の在籍${lm.active}名`);}
+ if(s.offlist&&s.offlist.n)set('smr-offlist',`2026年1月以降の会費売上には、入学金込みなど定価表にない金額の決済が${s.offlist.n}件・${yen(s.offlist.amt)}（返金前の金額）含まれます。`);
  const tb=document.querySelector('#tbl-smonth tbody');
  if(tb){tb.innerHTML=s.months.slice().reverse().map(x=>{const n=x.net>0?`+${x.net}`:(x.net<0?`▲${-x.net}`:'±0');
   const cls=x.net>0?'pos':(x.net<0?'neg':'');
-  return `<tr${x.partial?' style="background:#f7f8fb;color:var(--muted)"':''}><td class="l"><b>${x.ym}</b>${x.partial?' <span style="font-size:10px">進行中</span>':''}</td><td class="mono"><b>${x.active}</b></td>
+  return `<tr${x.partial?' style="background:#f7f8fb"':''}><td class="l"><b>${x.ym}</b>${x.partial?' <span style="font-size:10px;color:var(--muted)">本日時点</span>':''}</td><td class="mono"><b>${x.active}</b></td>
    <td class="mono">${x.activeR.mentor}</td><td class="mono">${x.activeR.leader}</td><td class="mono">${x.activeR.crew}</td><td class="mono">${x.activeR.sup}</td>
-   <td class="mono">${x.new}</td><td class="mono">${x.back}</td><td class="mono">${x.partial?'—':x.left}</td><td class="mono ${x.partial?'':cls}">${x.partial?'<span style="font-size:10px">月末に確定</span>':`<b>${n}</b>`}</td><td class="mono">${yen(x.sales)}</td></tr>`;}).join('');}
+   <td class="mono">${x.new}</td><td class="mono">${x.back}</td><td class="mono">${x.left}</td><td class="mono ${cls}"><b>${n}</b></td><td class="mono">${yen(x.sales)}</td></tr>`;}).join('');}
 })();
 </script>
 </body>
