@@ -214,9 +214,9 @@
   </div>
   <div class="grid g4" style="margin-top:10px">
     <div class="card kpi"><div class="label">見込み（突破Aiの無料期間中）<span style="font-size:10px;color:var(--muted)">別枠</span></div><div class="num" style="color:var(--crew)"><span id="sm-trial">—</span><span class="unit">名</span></div><div class="foot" id="sm-trial-foot">—</div></div>
-    <div class="card kpi"><div class="label" id="sm-lm-label">先月の新規</div><div class="num" style="color:var(--pos)"><span id="sm-new">—</span><span class="unit">名</span></div><div class="foot" id="sm-new-foot">—</div></div>
-    <div class="card kpi"><div class="label" id="sm-lm-label2">先月の離脱</div><div class="num" style="color:var(--neg)"><span id="sm-left">—</span><span class="unit">名</span></div><div class="foot" id="sm-left-foot">—</div></div>
-    <div class="card kpi"><div class="label" id="sm-lm-label3">先月の会費売上</div><div class="num" id="sm-sales">—</div><div class="foot" id="sm-sales-foot">—</div></div>
+    <div class="card kpi"><div class="label" id="sm-lm-label">前月末の在籍（累計）</div><div class="num"><span id="sm-new">—</span><span class="unit">名</span></div><div class="foot" id="sm-new-foot">—</div></div>
+    <div class="card kpi"><div class="label" id="sm-lm-label2">当月の増減</div><div class="num" id="sm-left-num"><span id="sm-left">—</span><span class="unit">名</span></div><div class="foot" id="sm-left-foot">—</div></div>
+    <div class="card kpi"><div class="label" id="sm-lm-label3">会費売上の累計</div><div class="num" id="sm-sales">—</div><div class="foot" id="sm-sales-foot">—</div></div>
   </div>
 
   <div class="sec"><span class="badge">S2</span><h2>突破Aiに登録した全員の現在地（LP経由）</h2><span class="note">単位：名（メールアドレス単位・1人1区分）／これまでにStripeで突破Aiのサブスクに登録した方の全員</span></div>
@@ -2200,12 +2200,17 @@ if(typeof toppaUpsell!=='undefined'&&toppaUpsell.hist&&toppaUpsell.hist.length){
   if(tbn)tbn.innerHTML=rf('<b>課金中</b>（無料期間が終わり、課金が始まった方）',f.paid,' style="background:#eef6f3"')+rf('無料期間中（これから課金の判定）',f.trial)+rf('解除済み',f.cancel)+rf('計（新プランに登録した全員）',f.all,' style="font-weight:700"');
   const dec=f.paid.total+f.cancel.total,scope=`対象は、Stripeの商品名に「14日間無料体験後の継続」を含むサブスクのうち、${sd}以降に登録したものです。会費の決済も、そのサブスクの請求だけを数えています。`;
   set('sm-np-note',!np.started?`新プランは${sd}から数えはじめます（本日はまだ0名です）。`:(!f.all.total?`${sd}から数えています。まだ登録はありません。${scope}`:`${sd}以降に新プランに登録した${f.all.total}名のうち、結果が出た方（課金中＋解除済み）は${dec}名で、そのうち課金中は${f.paid.total}名（${dec?(f.paid.total/dec*100).toFixed(1):'—'}%）です。新プランの会費の決済は${np.charges}件・${yen(np.chargeAmt)}（${np.chargePeople}名）です。${scope}1人が複数回登録している場合は、S2と同じく課金中＞無料期間中＞解除済みの順で1つの区分に入れています。`));}
- const lm=s.months[s.months.length-1];
- if(lm){const p=lm.ym.split('/'),u=String(s.updated||'').split('/'),asof=lm.partial&&u.length===3?`（${+u[1]}/${+u[2]}時点）`:'',lab=`${p[0]}年${+p[1]}月`;
-  set('sm-lm-label',lab+'の新規'+asof);set('sm-lm-label2',lab+'の離脱'+asof);set('sm-lm-label3',lab+'の会費売上'+asof);
-  set('sm-new',lm.new);set('sm-new-foot',`メンター${lm.newR.mentor}・リーダー${lm.newR.leader}・クルー${lm.newR.crew}・サポーター${lm.newR.sup}／ほかに復帰${lm.back}名`);
-  set('sm-left',lm.left);set('sm-left-foot',`メンター${lm.leftR.mentor}・リーダー${lm.leftR.leader}・クルー${lm.leftR.crew}・サポーター${lm.leftR.sup}／純増減${lm.net>0?'+':(lm.net<0?'▲':'±')}${Math.abs(lm.net)}名`);
-  set('sm-sales',yen(lm.sales));set('sm-sales-foot',lm.partial?`${+u[1]}/${+u[2]}時点の在籍${lm.active}名（月の途中の値です）`:`月末の在籍${lm.active}名`);}
+ const n=s.months.length,lm=s.months[n-1],pm=s.months[n-2];
+ if(lm&&pm){const ml=x=>{const q=x.ym.split('/');return `${q[0]}年${+q[1]}月`;},u=String(s.updated||'').split('/'),asof=lm.partial&&u.length===3?`（${+u[1]}/${+u[2]}時点）`:'',sg=v=>v>0?'+'+v:(v<0?'▲'+(-v):'±0');
+  const bridge=pm.active+lm.new+lm.back-lm.left,gap=t.total-bridge;
+  set('sm-lm-label',ml(pm)+'末の在籍（累計）');set('sm-new',pm.active);
+  set('sm-new-foot',`${ml(pm)}は新規${pm.new}・復帰${pm.back}・離脱${pm.left}（純増減${sg(pm.net)}名）`);
+  set('sm-lm-label2',ml(lm)+'の増減'+asof);set('sm-left',sg(lm.new+lm.back-lm.left));
+  {const e=document.getElementById('sm-left-num');if(e)e.style.color=(lm.new+lm.back-lm.left)<0?'var(--neg)':'var(--pos)';}
+  set('sm-left-foot',`新規${lm.new}（メンター${lm.newR.mentor}・リーダー${lm.newR.leader}・クルー${lm.newR.crew}・サポーター${lm.newR.sup}）・復帰${lm.back}・離脱${lm.left}／${pm.active}＋${lm.new+lm.back-lm.left}＝${bridge}名`+(gap?`（本日の会員数${t.total}名と${Math.abs(gap)}名の差）`:'＝本日の会員数'));
+  const cumPrev=s.months.slice(0,n-1).reduce((a,x)=>a+x.sales,0),f0=s.months[0].ym.split('/');
+  set('sm-lm-label3',`会費売上の累計（${f0[0]}年${+f0[1]}月〜${lm.partial&&u.length===3?(+u[1])+'/'+(+u[2]):ml(lm)+'末'}）`);
+  set('sm-sales',yen(cumPrev+lm.sales));set('sm-sales-foot',`${ml(pm)}末までの累計${yen(cumPrev)}＋${ml(lm)}${asof}${yen(lm.sales)}`);}
  if(s.offlist&&s.offlist.n)set('smr-offlist',`2026年1月以降の会費売上には、入学金込みなど定価表にない金額の決済が${s.offlist.n}件・${yen(s.offlist.amt)}（返金前の金額）含まれます。`);
  const det=o=>Object.entries(o||{}).map(([k,v])=>`${k} ${v}`).join('・');
  const tb=document.querySelector('#tbl-smonth tbody');
